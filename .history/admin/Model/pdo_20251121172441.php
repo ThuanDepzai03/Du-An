@@ -1,8 +1,7 @@
 <?php
 /* function kết nối database */
-function pdo_get_connection()
-{
-    $dburl = "mysql:host=localhost;dbname=duandienthoai;charset=utf8";
+function pdo_get_connection(){
+    $dburl = "mysql:host=localhost;dbname=duan2024;charset=utf8";
     $username = 'root';
     $password = '';
 
@@ -18,31 +17,33 @@ function pdo_get_connection()
  * @throws PDOException lỗi thực thi câu lệnh
  */
 /* function thực thi các câu lệnh như sửa, thêm, xóa */
-function pdo_execute($sql)
-{
+function pdo_execute($sql){
     $sql_args = array_slice(func_get_args(), 1);
-    try {
+    try{
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-    } catch (PDOException $e) {
+    }
+    catch(PDOException $e){
         throw $e;
-    } finally {
+    }
+    finally{
         unset($conn);
     }
 }
 
-function pdo_execute_return_id($sql)
-{
+function pdo_execute_return_id($sql){
     $sql_args = array_slice(func_get_args(), 1);
-    try {
+    try{
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         return $conn->lastInsertId();
-    } catch (PDOException $e) {
+    }
+    catch(PDOException $e){
         throw $e;
-    } finally {
+    }
+    finally{
         unset($conn);
     }
 }
@@ -55,18 +56,19 @@ function pdo_execute_return_id($sql)
  * @throws PDOException lỗi thực thi câu lệnh
  */
 /* function để truy vấn dữ liệu theo yêu cầu nào đó (1 hoặc nhiều điều kiện) */
-function pdo_query($sql)
-{
+function pdo_query($sql){
     $sql_args = array_slice(func_get_args(), 1);
-    try {
+    try{
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $rows = $stmt->fetchAll();
         return $rows;
-    } catch (PDOException $e) {
+    }
+    catch(PDOException $e){
         throw $e;
-    } finally {
+    }
+    finally{
         unset($conn);
     }
 }
@@ -78,19 +80,20 @@ function pdo_query($sql)
  * @throws PDOException lỗi thực thi câu lệnh
  */
 
-/* function sửa */
-function pdo_query_one($sql)
-{
+ /* function sửa */
+function pdo_query_one($sql){
     $sql_args = array_slice(func_get_args(), 1);
-    try {
+    try{
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
-    } catch (PDOException $e) {
+    }
+    catch(PDOException $e){
         throw $e;
-    } finally {
+    }
+    finally{
         unset($conn);
     }
 }
@@ -101,16 +104,16 @@ function pdo_query_one($sql)
  * @return giá trị
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_value($sql)
-{
+function pdo_query_value($sql){
     $sql_args = array_slice(func_get_args(), 1);
-    try {
+    try{
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return array_values($row)[0];
-    } catch (PDOException $e) {
+    }
+    catch(PDOException $e){
         throw $e;
     }
 }
