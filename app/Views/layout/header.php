@@ -79,7 +79,7 @@
 										<option value="1">Category 01</option>
 										<option value="1">Category 02</option>
 									</select>
-									<input class="input" placeholder="Tìm Kiếm Sản Phẩm">
+									<input class="input" placeholder="Tìm+76y Kiếm Sản Phẩm">
 									<button class="search-btn">Tìm Kiếm</button>
 								</form>
 							</div>
