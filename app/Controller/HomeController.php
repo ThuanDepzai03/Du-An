@@ -4,19 +4,24 @@ include_once("Model/HomeModel.php");
 class HomeController {
 
     public function index() {
-    $productModel = new HomeModel(); 
+        $productModel = new HomeModel(); 
 
-    $newProducts = $productModel->getNewProducts(); 
-    $danhmuc = $productModel->loadAllDanhMuc();
+        // Lấy danh mục
+        $danhmuc = $productModel->loadAllDanhMuc();
 
-    $productsByDanhMuc = [];
+        // Lấy id danh mục từ URL
+        $iddm = $_GET['iddm'] ?? 'all';
 
-    foreach ($danhmuc as $dm) {
-        $productsByDanhMuc[$dm['id']] = $productModel->loadProductsByDanhMuc($dm['id']);
+        if ($iddm === 'all') {
+            // Nếu là tất cả → lấy sản phẩm mới
+            $newProducts = $productModel->getNewProducts();
+        } 
+        else {
+            // Nếu có danh mục → lấy sản phẩm theo danh mục
+            $newProducts = $productModel->loadProductsByDanhMuc($iddm);
+        }
+
+        include_once("Views/home.php");
     }
-
-    include_once("Views/home.php");
-}
-
 }
 ?>
