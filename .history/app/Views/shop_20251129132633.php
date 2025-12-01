@@ -1,7 +1,10 @@
 <div class="section">
+    <!-- container -->
     <div class="container">
+        <!-- row -->
         <div class="row">
 
+            <!-- section title -->
             <div class="col-md-12">
                 <div class="section-title">
                     <h3 class="title">All Sản Phẩm</h3>
@@ -19,14 +22,16 @@
 
                 </div>
             </div>
+            <!-- /section title -->
+
+            <!-- Products tab & slick -->
             <div class="row g">
                 <?php if (!empty($newProducts)): ?>
                     <?php foreach ($newProducts as $sp): ?>
                         <div class="col-md-3 col-sm-6 mb-4">
                             <div class="product">
                                 <div class="product-img">
-                                    <img src="admin/" alt="">
-                                    <img src="<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>" alt="<?= htmlspecialchars($sp['name']) ?>" class="img-fluid">
+                                    <img src="/DU-AN/admin/image/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>" alt="<?= htmlspecialchars($sp['name']) ?>" class="img-fluid">
                                     <div class="product-label">
                                         <span class="new">NEW</span>
                                     </div>
@@ -65,47 +70,46 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-
----
-
-<div id="hot-deal" class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="hot-deal">
-                    <h2 class="text-uppercase">hot deal this week</h2>
-                    <p>New Collection Up to 50% OFF</p>
-                    <ul class="hot-deal-countdown">
-                        <li>
-                            <div>
-                                <h3>02</h3>
-                                <span>Days</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <h3>10</h3>
-                                <span>Hours</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <h3>34</h3>
-                                <span>Mins</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <h3>60</h3>
-                                <span>Secs</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <a class="primary-btn cta-btn" href="#">Shop now</a>
+    <div id="hot-deal" class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hot-deal">
+                        <ul class="hot-deal-countdown">
+                            <li>
+                                <div>
+                                    <h3>02</h3>
+                                    <span>Days</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>10</h3>
+                                    <span>Hours</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>34</h3>
+                                    <span>Mins</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>60</h3>
+                                    <span>Secs</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <h2 class="text-uppercase">hot deal this week</h2>
+                        <p>New Collection Up to 50% OFF</p>
+                        <a class="primary-btn cta-btn" href="#">Shop now</a>
+                    </div>
                 </div>
             </div>
+            <!-- /row -->
         </div>
+        <!-- /container -->
     </div>
-</div>

@@ -1,10 +1,10 @@
 <?php
-include_once("Model/HomeModel.php");
+include_once("Model/ShopModel.php");
 
-class HomeController
+class ShopController
 {
 
-    public function home()
+    public function index()
     {
         $productModel = new HomeModel();
 

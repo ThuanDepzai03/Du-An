@@ -1,7 +1,7 @@
 <?php
 include_once("pdo.php");
 
-class HomeModel
+class ShopModel
 {
 
     public function getNewProducts()

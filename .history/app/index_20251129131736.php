@@ -21,6 +21,6 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             break;
     }
 } else {
-    $homeController->home(); // mặc định
+    $homeController->home();; // mặc định
 }
 include_once("Views/layout/footer.php");

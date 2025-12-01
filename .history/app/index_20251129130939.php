@@ -10,10 +10,10 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
     $action = $_GET['action'];
     switch ($action) {
         case 'home':
-            $homeController->home();
+            $controller->index();
             break;
         case 'shop':                //  ⭐ THÊM MỚI
-            $shopController->Shop();    //  ⭐ GỌI HÀM shop() TRONG CONTROLLER
+            $controller->Shop();    //  ⭐ GỌI HÀM shop() TRONG CONTROLLER
             break;
 
         default:
@@ -21,6 +21,6 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             break;
     }
 } else {
-    $homeController->home(); // mặc định
+    $controller->index(); // mặc định
 }
 include_once("Views/layout/footer.php");
