@@ -1,12 +1,12 @@
 <?php
-include_once("Model/HomeModel.php");
+include_once("Model/ShopModel.php");
 
-class HomeController
+class ShopController
 {
 
-    public function home()
+    public function Shop()
     {
-        $productModel = new HomeModel();
+        $productModel = new ShopModel();
 
         $newProducts = $productModel->getNewProducts();
         $danhmuc = $productModel->loadAllDanhMuc();
@@ -17,6 +17,6 @@ class HomeController
             $productsByDanhMuc[$dm['id']] = $productModel->loadProductsByDanhMuc($dm['id']);
         }
 
-        include_once("Views/home.php");
+        include_once("Views/shop.php");
     }
 }

@@ -3,17 +3,16 @@ include_once("Controller/HomeController.php");
 include_once("Views/layout/header.php");
 include_once("Controller/ShopController.php");
 
-$homeController = new HomeController(); // khởi tạo controller mặc định
-$shopController = new ShopController(); // khởi tạo controller mặc định
+$controller = new HomeController(); // khởi tạo controller mặc định
 
 if (isset($_GET['action']) && $_GET['action'] != "") {
     $action = $_GET['action'];
     switch ($action) {
         case 'home':
-            $homeController->home();
+            $controller->index();
             break;
         case 'shop':                //  ⭐ THÊM MỚI
-            $shopController->Shop();    //  ⭐ GỌI HÀM shop() TRONG CONTROLLER
+            $controller->Shop();    //  ⭐ GỌI HÀM shop() TRONG CONTROLLER
             break;
 
         default:
@@ -21,6 +20,6 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             break;
     }
 } else {
-    $homeController->home(); // mặc định
+    $controller->index(); // mặc định
 }
 include_once("Views/layout/footer.php");

@@ -1,5 +1,5 @@
 <div class="section">
-	<!-- container -->
+			<!-- container -->
 	<div class="container">
 		<!-- row -->
 		<div class="row">
@@ -31,7 +31,7 @@
 						<div class="col-md-3 col-sm-6 mb-4">
 							<div class="product">
 								<div class="product-img">
-									<img src="/DU-AN/admin/image/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>" alt="<?= htmlspecialchars($sp['name']) ?>" class="img-fluid">
+									<img src="/Du-An/admin/image/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>" alt="<?= htmlspecialchars($sp['name']) ?>" class="img-fluid">
 									<div class="product-label">
 										<span class="new">NEW</span>
 									</div>
@@ -68,10 +68,10 @@
 					<p>Hiện chưa có sản phẩm nào.</p>
 				<?php endif; ?>
 			</div>
-		</div>
 	</div>
-	<div id="hot-deal" class="section">
-		<!-- container -->
+</div>
+<div id="hot-deal" class="section">
+	<!-- container -->
 		<div class="container">
 			<!-- row -->
 			<div class="row">
@@ -111,5 +111,6 @@
 			</div>
 			<!-- /row -->
 		</div>
-		<!-- /container -->
+	<!-- /container -->
 	</div>
+        

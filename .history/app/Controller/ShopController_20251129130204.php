@@ -1,12 +1,12 @@
 <?php
-include_once("Model/HomeModel.php");
+include_once("Model/ShopModel.php");
 
-class HomeController
+class ShopController
 {
 
-    public function home()
+    public function index()
     {
-        $productModel = new HomeModel();
+        $productModel = new ShopModel();
 
         $newProducts = $productModel->getNewProducts();
         $danhmuc = $productModel->loadAllDanhMuc();
