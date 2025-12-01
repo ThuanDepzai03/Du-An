@@ -12,7 +12,6 @@ class HomeModel
         return pdo_query($sql);
     }
 
-
     // Đã thêm từ khóa public
     public function loadProductsByDanhMuc($iddm)
     {
