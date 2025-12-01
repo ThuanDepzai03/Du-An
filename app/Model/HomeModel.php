@@ -1,10 +1,12 @@
 <?php
 include_once("pdo.php");
 
-class HomeModel {
+class HomeModel
+{
 
-    public function getNewProducts() {
-    $sql = "SELECT sp.*, dm.name AS category_name
+    public function getNewProducts()
+    {
+        $sql = "SELECT sp.*, dm.name AS category_name
             FROM sanpham sp
             LEFT JOIN danhmuc dm ON sp.iddm = dm.id
             ORDER BY sp.id DESC LIMIT 8";
@@ -30,5 +32,9 @@ function loadProductsByDanhMuc($iddm) {
 
 
 
+    public function loadAllDanhMuc()
+    {
+        $sql = "SELECT * FROM danhmuc ORDER BY id ASC";
+        return pdo_query($sql);
+    }
 }
-?>

@@ -1,7 +1,8 @@
-<?php 
+<?php
 include_once("Model/HomeModel.php");
 
-class HomeController {
+class HomeController
+{
 
     public function index() {
         $productModel = new HomeModel(); 
@@ -11,7 +12,7 @@ class HomeController {
 
         // Lấy id danh mục từ URL
         $iddm = $_GET['iddm'] ?? 'all';
-
+  
         if ($iddm === 'all') {
             // Nếu là tất cả → lấy sản phẩm mới
             $newProducts = $productModel->getNewProducts();
@@ -24,4 +25,3 @@ class HomeController {
         include_once("Views/home.php");
     }
 }
-?>

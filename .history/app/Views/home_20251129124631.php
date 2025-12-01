@@ -7,27 +7,18 @@
 			<!-- section title -->
 			<div class="col-md-12">
 				<div class="section-title">
-					<h3 class="title">Sản Phẩm</h3>
-						<div class="section-nav">
-							
-							<ul class="section-tab-nav tab-nav">
-
-								<!-- Tất cả -->
-								<li>
-									<a href="index.php?action=home&iddm=all">News</a>
+					<h3 class="title">Sản Phẩm Mới</h3>
+					<div class="section-nav">
+						<ul class="section-tab-nav tab-nav">
+							<?php foreach ($danhmuc as $index => $dm): ?>
+								<li class="<?= $index === 0 ? 'active' : '' ?>">
+									<a data-toggle="tab" href="#tab<?= $dm['id'] ?>">
+										<?= htmlspecialchars($dm['name']) ?>
+									</a>
 								</li>
-
-								<?php foreach ($danhmuc as $dm): ?>
-									<li>
-										<a href="index.php?action=home&iddm=<?= $dm['id'] ?>">
-											<?= $dm['name'] ?>
-										</a>
-									</li>
-								<?php endforeach; ?>
-
-							</ul>
-						</div>
-
+							<?php endforeach; ?>
+						</ul>
+					</div>
 
 				</div>
 			</div>
@@ -40,10 +31,7 @@
 						<div class="col-md-3 col-sm-6 mb-4">
 							<div class="product">
 								<div class="product-img">
-										<img src="../admin/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>"
-										alt="<?= htmlspecialchars($sp['name'] ?? '') ?>"
-										class="img-fluid">
-
+									<img src="/DU-AN/admin/image/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>" alt="<?= htmlspecialchars($sp['name']) ?>" class="img-fluid">
 									<div class="product-label">
 										<span class="new">NEW</span>
 									</div>
