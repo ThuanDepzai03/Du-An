@@ -25,8 +25,10 @@
                         <div class="col-md-3 col-sm-6 mb-4">
                             <div class="product">
                                 <div class="product-img">
-                                    <img src="admin/" alt="">
-                                    <img src="<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>" alt="<?= htmlspecialchars($sp['name']) ?>" class="img-fluid">
+                                    <img src="../admin/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>"
+                                        alt="<?= htmlspecialchars($sp['name'] ?? '') ?>"
+                                        class="img-fluid">
+
                                     <div class="product-label">
                                         <span class="new">NEW</span>
                                     </div>
