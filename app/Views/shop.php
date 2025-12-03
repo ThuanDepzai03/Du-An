@@ -104,10 +104,10 @@
                                     </div>
 
                                     <div class="add-to-cart">
-                                        <button class="add-to-cart-btn">
-                                            <i class="fa fa-shopping-cart"></i> Thêm vào giỏ
+                                        <button class="add-to-cart-btn" onclick="location.href='index.php?action=addcart&idsp=<?= $sp['id'] ?>'">
+                                            <i class="fa fa-shopping-cart"></i> Add to Cart
                                         </button>
-                                    </div>
+								    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>

@@ -56,9 +56,8 @@
                             <span class="qty-down">-</span>
                         </div>
                     </div>
-                    <button class="add-to-cart-btn" data-id="<?= $product['id'] ?>">
-                        <i class="fa fa-shopping-cart"></i> add to cart
-                    </button>
+                        <button class="add-to-cart-btn" onclick="location.href='index.php?action=addcart&idsp=<?= $product['id'] ?>'">
+								<i class="fa fa-shopping-cart"></i> Add to Cart</button>
                 </div>
 
                 <!-- Wishlist & Compare -->
