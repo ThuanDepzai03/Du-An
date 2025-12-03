@@ -1,10 +1,17 @@
 <?php
+// Bật output buffering từ đầu file
+ob_start();
+
 include_once("Controller/HomeController.php");
 include_once("Controller/ShopController.php");
+include_once("Controller/CartController.php");
+include_once("Controller/CheckOutController.php");
 
 // Khởi tạo các controller
 $homeController = new HomeController();
 $shopController = new ShopController();
+$cartController = new CartController();
+$checkoutController = new CheckOutController();
 
 // Phần Header thường nên để Controller gọi bên trong hàm view, 
 // nhưng nếu bạn để ở đây thì nó sẽ hiện cho tất cả các trang.
@@ -17,8 +24,20 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $homeController->home();
             break;
         case 'shop':
-            // Kiểm tra kỹ bên ShopController tên hàm là Shop() hay shop() nhé
             $shopController->Shop();
+            break;
+        case 'addcart':  
+            $cartController->add();
+            break;
+        case 'showcart':
+            $cartController->index();
+            break;
+        case 'showcheckout':
+            $checkoutController->showCheckout();
+
+            break;
+        case 'checkoutsubmit':  
+            $checkoutController->checkout();
             break;
         default:
             echo "<h1>404 Not Found</h1>";
@@ -29,3 +48,7 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
 }
 
 include_once("Views/layout/footer.php");
+
+// Flush và tắt output buffering, gửi tất cả output ra trình duyệt
+ob_end_flush();
+?>
