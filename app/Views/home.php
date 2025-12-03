@@ -34,18 +34,17 @@
 			<!-- /section title -->
 
 			<!-- Products tab & slick -->
-			<div class="row g">
+			<div class="row">
 				<?php if (!empty($newProducts)): ?>
 					<?php foreach ($newProducts as $sp): ?>
 						<div class="col-md-3 col-sm-6 mb-4">
 							<div class="product">
 								<div class="product-img">
-									<img src="../admin/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>"
-										alt="<?= htmlspecialchars($sp['name'] ?? '') ?>"
-										class="img-fluid">
-
+									<a href="index.php?action=detail&id=<?= $sp['id'] ?>">
+										<img src="../admin/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>" alt="<?= $sp['name'] ?>">
+									</a>
 									<div class="product-label">
-										<span class="new">NEW</span>
+										<span class="new">News</span>
 									</div>
 								</div>
 
@@ -53,7 +52,9 @@
 									<p class="product-category"><?= htmlspecialchars($sp['category_name']) ?></p>
 
 									<h3 class="product-name">
-										<a href="#"><?= htmlspecialchars($sp['name']) ?></a>
+										<a href="index.php?action=detail&id=<?= $sp['id'] ?>">
+											<?= htmlspecialchars($sp['name']) ?>
+										</a>
 									</h3>
 									<h4 class="product-price"><?= number_format($sp['price']) ?> ₫</h4>
 									<div class="product-rating">

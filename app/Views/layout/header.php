@@ -144,11 +144,13 @@ $cartQty = array_sum(array_column($cart, 'soLuong'));
 
 	<nav id="navigation">
 		<div class="container">
-			<ul class="main-nav nav navbar-nav">
-				<li><a href="index.php?action=home">Trang Chủ</a></li>
-				<li><a href="index.php?action=shop">Cửa Hàng</a></li>
-				<li><a href="#">Liên Hệ</a></li>
-				<li><a href="#">Giới Thiệu</a></li>
-			</ul>
+			<div id="responsive-nav">
+				<ul class="main-nav nav navbar-nav">
+					<li><a href="index.php?action=home">Trang Chủ</a></li>
+					<li><a href="index.php?action=shop">Cửa Hàng</a></li>
+					<li><a href="http://localhost:3000/app/index.php?action=contact">Liên Hệ</a></li>
+					<li><a href="http://localhost:3000/app/index.php?action=about">Giới Thiệu</a></li>
+				</ul>
+			</div>
 		</div>
 	</nav>
