@@ -59,24 +59,29 @@
 
                 </form>
             </div>
-            <div class="row">
-                <?php if (!empty($newProducts)): ?>
-                    <?php foreach ($newProducts as $sp): ?>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <div class="product">
-                                <div class="product-img">
-                                    <a href="index.php?action=detail&id=<?= $sp['id'] ?>">
-										<img src="../admin/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>" alt="<?= $sp['name'] ?>">
-									</a>
+            <div id="store" class="col-md-9">
 
-                                    <div class="product-label">
-                                        <span class="new">NEW</span>
-                                    </div>
-                                </div>
-
-
-                                <div class="product-body">
-                                    <p class="product-category"><?= htmlspecialchars($sp['category_name']) ?></p>
+                <div class="store-filter clearfix">
+                    <div class="store-sort">
+                        <label>
+                            Sắp xếp:
+                            <select class="input-select">
+                                <option value="0">Mới nhất</option>
+                                <option value="1">Giá tăng dần</option>
+                            </select>
+                        </label>
+                    </div>
+                    <span class="store-qty">Hiển thị <?= count($newProducts) ?> sản phẩm</span>
+                </div>
+                <div class="row">
+                    <?php if (!empty($newProducts)): ?>
+                        <?php foreach ($newProducts as $sp): ?>
+                            <div class="col-md-4 col-xs-6">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <img src="../admin/<?= htmlspecialchars($sp['img'] ?? 'default.png') ?>"
+                                            alt="<?= htmlspecialchars($sp['name']) ?>"
+                                            style="height: 250px; object-fit: contain; padding: 10px;">
 
                                         <div class="product-label">
                                             <?php if ($sp['price'] > 20000000): ?>

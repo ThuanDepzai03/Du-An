@@ -8,18 +8,19 @@ class ShopController
     {
         $productModel = new ShopModel();
 
-        // Lấy các tham số lọc cũ
+        // 1. Lấy dữ liệu từ URL
         $min = isset($_GET['min_price']) ? (int)$_GET['min_price'] : 0;
         $max = isset($_GET['max_price']) ? (int)$_GET['max_price'] : 0;
+
+        // Hứng thêm IDDM
         $iddm = isset($_GET['iddm']) ? (int)$_GET['iddm'] : 0;
 
-        // LẤY THAM SỐ SẮP XẾP (Code mới thêm)
-        $sort = isset($_GET['sort']) ? (int)$_GET['sort'] : 0;
+        // 2. Gọi hàm lọc (Truyền thêm $iddm vào)
+        $newProducts = $productModel->getFilteredProducts($min, $max, $iddm);
 
-        // Truyền $sort vào hàm
-        $newProducts = $productModel->getFilteredProducts($min, $max, $iddm, $sort);
-
+        // 3. Lấy danh mục để hiển thị cột bên trái
         $danhmuc = $productModel->loadAllDanhMuc();
+
         include_once("Views/shop.php");
     }
 }
