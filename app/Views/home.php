@@ -72,8 +72,9 @@
 								</div>
 
 								<div class="add-to-cart">
-									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+									<a href="index.php?action=addcart&idsp=<?= $sp['id'] ?>" class="btn btn-primary">Add to Cart</a>
 								</div>
+
 							</div>
 						</div>
 					<?php endforeach; ?>
