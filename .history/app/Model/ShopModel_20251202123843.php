@@ -32,28 +32,26 @@ class ShopModel
      * @param int $min Giá thấp nhất
      * @param int $max Giá cao nhất (0 nghĩa là không giới hạn)
      */
-    // Thêm tham số $iddm vào hàm (mặc định là 0)
-    // Thêm tham số $sort vào cuối (mặc định là 0)
-    public function getFilteredProducts($min = 0, $max = 0, $iddm = 0, $sort = 0)
+    public function getFilteredProducts($min = 0, $max = 0)
     {
+        // 1. Câu lệnh SQL cơ bản, nối bảng để lấy tên danh mục luôn
         $sql = "SELECT sp.*, dm.name AS category_name 
-            FROM sanpham sp 
-            LEFT JOIN danhmuc dm ON sp.iddm = dm.id 
-            WHERE 1=1";
+                FROM sanpham sp 
+                LEFT JOIN danhmuc dm ON sp.iddm = dm.id 
+                WHERE 1=1"; // Kỹ thuật 1=1 để dễ nối chuỗi AND phía sau
 
-        // 1. Lọc giá
-        if ($min > 0) $sql .= " AND sp.price >= " . (int)$min;
-        if ($max > 0) $sql .= " AND sp.price <= " . (int)$max;
-
-        // 2. Lọc danh mục
-        if ($iddm > 0) $sql .= " AND sp.iddm = " . (int)$iddm;
-
-        // 3. XỬ LÝ SẮP XẾP (Code mới thêm)
-        if ($sort == 1) {
-            $sql .= " ORDER BY sp.price ASC"; // Giá tăng dần
-        } else {
-            $sql .= " ORDER BY sp.id DESC";   // Mặc định: Mới nhất
+        // 2. Nếu có lọc giá Min
+        if ($min > 0) {
+            $sql .= " AND sp.price >= " . (int)$min;
         }
+
+        // 3. Nếu có lọc giá Max
+        if ($max > 0) {
+            $sql .= " AND sp.price <= " . (int)$max;
+        }
+
+        // 4. Sắp xếp và trả về
+        $sql .= " ORDER BY sp.id DESC";
 
         return pdo_query($sql);
     }

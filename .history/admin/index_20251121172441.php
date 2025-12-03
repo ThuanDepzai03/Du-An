@@ -4,9 +4,9 @@ include_once("Controller/SanPhamController.php");
 
 $danhMuc = new DanhMucController();
 $sanPham = new SanPhamController();
-if (isset($_GET['action']) && $_GET['action'] != "") {
-    $action = $_GET['action'];
-    switch ($action) {
+if(isset($_GET['action']) && $_GET['action'] != "") {
+$action = $_GET['action'];
+    switch($action) {
         //danhmuc
         case "listdanhmuc":
             $danhMuc->index();
@@ -54,3 +54,5 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
 } else {
     $danhMuc->index();
 }
+
+?>
