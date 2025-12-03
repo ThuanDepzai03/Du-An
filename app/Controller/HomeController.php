@@ -24,4 +24,12 @@ class HomeController
 
         include_once("Views/home.php");
     }
+    public function about()
+    {
+        include_once("Views/about.php");
+    }
+    public function contact()
+    {
+        include_once("Views/contact.php");
+    }
 }
