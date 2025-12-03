@@ -1,0 +1,99 @@
+<?php 
+include_once("./Views/layout/header.php");
+
+// Tính tổng tiền
+$tongTien = 0;
+foreach ($_SESSION['cart'] as $item) {
+    $tongTien += $item['price'] * $item['soLuong'];
+}
+?>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+
+            <form action="index.php?action=checkoutsubmit" method="POST" class="col-md-12" style="display:flex; gap:30px;">
+
+                <!-- Billing -->
+                <div class="col-md-7">
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">Địa chỉ giao hàng</h3>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="input" type="text" name="ten" placeholder="Họ và tên" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="input" type="text" name="diachi" placeholder="Địa chỉ" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="input" type="tel" name="sdt" placeholder="Số điện thoại" required>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Order Details -->
+                <div class="col-md-5 order-details">
+                    <div class="section-title text-center">
+                        <h3 class="title">Đơn hàng của bạn</h3>
+                    </div>
+
+                    <div class="order-summary">
+                        <div class="order-col">
+                            <div><strong>Sản phẩm</strong></div>
+                            <div><strong>Số tiền</strong></div>
+                        </div>
+
+                        <div class="order-products">
+                            <?php foreach($_SESSION['cart'] as $item) { ?>
+                                <div class="order-col">
+                                    <div>
+                                        <?= $item['name'] ?> x <?= $item['soLuong'] ?>
+                                    </div>
+                                    <div>
+                                        <?= number_format($item['price'] * $item['soLuong']) ?>₫
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+
+                        <div class="order-col">
+                            <div><strong>Tổng tiền</strong></div>
+                            <div><strong class="order-total"><?= number_format($tongTien) ?>₫</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="payment-method">
+                        <div class="input-radio">
+                            <input type="radio" name="pttt" value="1" id="payment-1" required>
+                            <label for="payment-1">
+                                <span></span>
+                                Thanh toán online
+                            </label>
+                        </div>
+
+                        <div class="input-radio">
+                            <input type="radio" name="pttt" value="0" id="payment-2">
+                            <label for="payment-2">
+                                <span></span>
+                                Thanh toán khi nhận hàng
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="primary-btn order-submit" style="width:100%;">Thanh toán</button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php 
+include_once("./Views/layout/footer.php"); 
+?>

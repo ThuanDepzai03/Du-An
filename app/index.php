@@ -1,11 +1,18 @@
 <?php
+// Bật output buffering từ đầu file
+ob_start();
+
 include_once("Controller/HomeController.php");
 include_once("Controller/ShopController.php");
+include_once("Controller/CartController.php");
+include_once("Controller/CheckOutController.php");
 include_once("Controller/ProductController.php");
 
 // Khởi tạo các controller
 $homeController = new HomeController();
 $shopController = new ShopController();
+$cartController = new CartController();
+$checkoutController = new CheckOutController();
 $productController = new ProductController();
 
 
@@ -20,9 +27,19 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $homeController->home();
             break;
         case 'shop':
-            // Kiểm tra kỹ bên ShopController tên hàm là Shop() hay shop() nhé
             $shopController->Shop();
             break;
+        case 'addcart':  
+            $cartController->add();
+            break;
+        case 'showcart':
+            $cartController->index();
+            break;
+        case 'showcheckout':
+            $checkoutController->showCheckout();
+            break;
+        case 'checkoutsubmit':  
+            $checkoutController->checkout();
         case 'about':
             $homeController->about();
             break;
@@ -41,3 +58,7 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
 }
 
 include_once("Views/layout/footer.php");
+
+// Flush và tắt output buffering, gửi tất cả output ra trình duyệt
+ob_end_flush();
+?>
