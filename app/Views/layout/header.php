@@ -28,7 +28,7 @@
 			<div class="container">
 				<ul class="header-links pull-left">
 					<li><a href="#"><i class="fa fa-phone"></i>0902079427</a></li>
-					<li><a href="#"><i class="fa fa-envelope-o"></i> electro@email.com</a></li>
+					<li><a href="#"><i class="fa fa-envelope-o"></i> electro@gmail.com</a></li>
 					<li><a href="#"><i class="fa fa-map-marker"></i> Hải Phòng</a></li>
 				</ul>
 				<ul class="header-links pull-right">
@@ -47,17 +47,29 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-md-6">
+										<div class="col-md-6">
 						<div class="header-search">
-							<form>
-								<select class="input-select">
-									<option value="0">All Categories</option>
+							<form action="index.php" method="get">
+								<!-- Gửi action đến controller search -->
+								<input type="hidden" name="action" value="search">
+
+								<!-- Chọn danh mục nếu muốn -->
+								<select class="input-select" name="iddm">
+									<option value="0">All</option>
+									<?php foreach($danhmuc as $dm): ?>
+										<option value="<?= $dm['id'] ?>"><?= htmlspecialchars($dm['name']) ?></option>
+									<?php endforeach; ?>
 								</select>
-								<input class="input" placeholder="Tìm Kiếm Sản Phẩm">
-								<button class="search-btn">Tìm Kiếm</button>
+
+								<!-- Input từ khóa -->
+								<input class="input" type="text" name="keyword" placeholder="Tìm Kiếm Sản Phẩm" required>
+
+								<!-- Nút tìm kiếm -->
+								<button type="submit" class="search-btn">Tìm Kiếm</button>
 							</form>
 						</div>
 					</div>
+
 					<div class="col-md-3 clearfix">
 						<div class="header-ctn">
 							<div class="dropdown">
