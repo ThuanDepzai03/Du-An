@@ -27,8 +27,8 @@
 		<div id="top-header">
 			<div class="container">
 				<ul class="header-links pull-left">
-					<li><a href="#"><i class="fa fa-phone"></i> 0817963936</a></li>
-					<li><a href="#"><i class="fa fa-envelope-o"></i> thuanngu@email.com</a></li>
+					<li><a href="#"><i class="fa fa-phone"></i>0902079427</a></li>
+					<li><a href="#"><i class="fa fa-envelope-o"></i> electro@email.com</a></li>
 					<li><a href="#"><i class="fa fa-map-marker"></i> Hải Phòng</a></li>
 				</ul>
 				<ul class="header-links pull-right">
@@ -52,10 +52,8 @@
 							<form>
 								<select class="input-select">
 									<option value="0">All Categories</option>
-									<option value="1">Category 01</option>
-									<option value="1">Category 02</option>
 								</select>
-								<input class="input" placeholder="Tìm+76y Kiếm Sản Phẩm">
+								<input class="input" placeholder="Tìm Kiếm Sản Phẩm">
 								<button class="search-btn">Tìm Kiếm</button>
 							</form>
 						</div>
@@ -120,8 +118,8 @@
 				<ul class="main-nav nav navbar-nav">
 					<li><a href="index.php?action=home">Trang Chủ</a></li>
 					<li><a href="index.php?action=shop">Cửa Hàng</a></li>
-					<li><a href="#">Liên Hệ</a></li>
-					<li><a href="#">Giới Thiệu</a></li>
+					<li><a href="http://localhost:3000/app/index.php?action=contact">Liên Hệ</a></li>
+					<li><a href="http://localhost:3000/app/index.php?action=about">Giới Thiệu</a></li>
 				</ul>
 			</div>
 		</div>
