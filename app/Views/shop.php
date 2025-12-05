@@ -78,16 +78,11 @@
                                 <div class="product-body">
                                     <p class="product-category"><?= htmlspecialchars($sp['category_name']) ?></p>
 
-                                        <div class="product-label">
-                                            <?php if ($sp['price'] > 20000000): ?>
-                                                <span class="sale">-10%</span>
-                                            <?php endif; ?>
-                                            <span class="new">NEW</span>
-                                        </div>
+
                                     </div>
 
                                     <div class="product-body">
-                                        <p class="product-category"><?= htmlspecialchars($sp['category_name'] ?? 'Apple') ?></p>
+
                                         <h3 class="product-name">
                                             <a href="#"><?= htmlspecialchars($sp['name']) ?></a>
                                         </h3>
@@ -109,10 +104,10 @@
                                     </div>
 
                                     <div class="add-to-cart">
-                                        <button class="add-to-cart-btn">
-                                            <i class="fa fa-shopping-cart"></i> Thêm vào giỏ
+                                        <button class="add-to-cart-btn" onclick="location.href='index.php?action=addcart&idsp=<?= $sp['id'] ?>'">
+                                            <i class="fa fa-shopping-cart"></i> Add to Cart
                                         </button>
-                                    </div>
+								    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>

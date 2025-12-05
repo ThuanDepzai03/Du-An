@@ -20,7 +20,7 @@
                 <div>
                     <div class="product-rating">
                         <?php 
-                        $rating = $product['rating'] ?? 0;
+                        $rating = $product['rating'] ?? 5;
                         for ($i=1; $i<=5; $i++):
                             if ($i <= $rating) echo '<i class="fa fa-star"></i>';
                             else echo '<i class="fa fa-star-o"></i>';
@@ -42,7 +42,7 @@
                 </div>
 
                 <!-- Description -->
-                <p><?= htmlspecialchars($product['description'] ?? 'Chưa có mô tả') ?></p>
+                <p><?= htmlspecialchars($product['mota'] ?? 'Chưa có mô tả') ?></p>
 
                 <!-- Options -->
               
@@ -56,9 +56,8 @@
                             <span class="qty-down">-</span>
                         </div>
                     </div>
-                    <button class="add-to-cart-btn" data-id="<?= $product['id'] ?>">
-                        <i class="fa fa-shopping-cart"></i> add to cart
-                    </button>
+                        <button class="add-to-cart-btn" onclick="location.href='index.php?action=addcart&idsp=<?= $product['id'] ?>'">
+								<i class="fa fa-shopping-cart"></i> Add to Cart</button>
                 </div>
 
                 <!-- Wishlist & Compare -->
@@ -99,7 +98,7 @@
                     <div id="tab1" class="tab-pane fade in active">
                         <div class="row">
                             <div class="col-md-12">
-                                <p><?= htmlspecialchars($product['description'] ?? 'Chưa có mô tả') ?></p>
+                                <p><?= htmlspecialchars($product['mota'] ?? 'Chưa có mô tả') ?></p>
                             </div>
                         </div>
                     </div>
