@@ -57,12 +57,6 @@
                                 <span>Sản phẩm</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="index.php?action=createuser" class='sidebar-link'>
-                                <i class="bi bi-person-badge-fill"></i>
-                                <span>Thêm Admin/User</span>
-                            </a>
-                        </li>
 
                     </ul>
                 </div>

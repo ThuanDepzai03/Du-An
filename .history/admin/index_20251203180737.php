@@ -84,13 +84,6 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
         case "restoresanpham":
             $sanPham->restore();
             break;
-        case "createuser":
-            $userCtrl->create(); // Gọi hàm hiện form
-            break;
-
-        case "storeuser":
-            $userCtrl->store(); // Gọi hàm lưu vào DB
-            break;
 
         default:
             // Mặc định vào danh mục (nếu đã login)
