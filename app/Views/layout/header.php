@@ -1,7 +1,7 @@
 <?php
 // KHỞI TẠO SESSION AN TOÀN
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+	session_start();
 }
 
 // Đảm bảo giỏ hàng tồn tại
@@ -33,7 +33,7 @@ $cartQty = array_sum(array_column($cart, 'soLuong'));
 			<div class="container">
 				<ul class="header-links pull-left">
 					<li><a href="#"><i class="fa fa-phone"></i>0902079427</a></li>
-					<li><a href="#"><i class="fa fa-envelope-o"></i> electro@email.com</a></li>
+					<li><a href="#"><i class="fa fa-envelope-o"></i> aephoenic@email.com</a></li>
 					<li><a href="#"><i class="fa fa-map-marker"></i> Hải Phòng</a></li>
 				</ul>
 				<ul class="header-links pull-right">
@@ -63,7 +63,7 @@ $cartQty = array_sum(array_column($cart, 'soLuong'));
 								<!-- Chọn danh mục nếu muốn -->
 								<select class="input-select" name="iddm">
 									<option value="0">All</option>
-									<?php foreach($danhmuc as $dm): ?>
+									<?php foreach ($danhmuc as $dm): ?>
 										<option value="<?= $dm['id'] ?>"><?= htmlspecialchars($dm['name']) ?></option>
 									<?php endforeach; ?>
 								</select>
@@ -75,7 +75,7 @@ $cartQty = array_sum(array_column($cart, 'soLuong'));
 
 					<div class="col-md-3 clearfix">
 						<div class="header-ctn">
-							
+
 							<!-- GIỎ HÀNG -->
 							<div class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="index.php?action=showcart">
@@ -117,10 +117,10 @@ $cartQty = array_sum(array_column($cart, 'soLuong'));
 
 									<div class="cart-summary">
 										<h5>
-											Tổng tiền: 
+											Tổng tiền:
 											<strong class="text-danger">
 												<?= number_format(array_sum(array_map(
-													fn($i)=>$i['soLuong'] * $i['price'], 
+													fn($i) => $i['soLuong'] * $i['price'],
 													$cart
 												))) ?>₫
 											</strong>

@@ -11,9 +11,9 @@
 						<h3 class="footer-title">VỀ CHÚNG TÔI</h3>
 						<p>Electro Store</p>
 						<ul class="footer-links">
-							<li><a href="#"><i class="fa fa-map-marker"></i>Hải Phòng, Việt Nam</a></li>
+							<li><a href="#"><i class="fa fa-map-marker"></i>Hải Phòng, Việt Nam </a></li>
 							<li><a href="#"><i class="fa fa-phone"></i>0987 654 321</a></li>
-							<li><a href="#"><i class="fa fa-envelope-o"></i>electrostore@gmail.com</a></li>
+							<li><a href="#"><i class="fa fa-envelope-o"></i>aephoenic@gmail.com</a></li>
 						</ul>
 					</div>
 				</div>
@@ -81,7 +81,9 @@
 					</ul>
 
 					<span class="copyright">
-						© <script>document.write(new Date().getFullYear());</script> Son Store. All rights reserved
+						© <script>
+							document.write(new Date().getFullYear());
+						</script> Son Store. All rights reserved
 					</span>
 				</div>
 			</div>
