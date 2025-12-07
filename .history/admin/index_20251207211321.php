@@ -107,7 +107,7 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $hoaDon->index();
             break;
         case "chitiethoadon":
-            $hoaDon->chiTietHoaDon();
+            $chiTietHoaDon->chiTietHoaDon();
             break;
         case "update_status":
             $hoaDon->update_status();

@@ -1,53 +1,55 @@
 <?php include_once("views/layouts/header.php"); ?>
+<link rel="stylesheet" href="views/assets/css/app.css">
+
 
 <div class="col-12">
-    <div class="card" style="background-color: #1c1f2b; color: #ffffff;">
-        <div class="card-header" style="background-color: #1c1f2b; border-bottom: 1px solid #3a3f50;">
-            <h4 class="card-title" style="color: #ffffff;">Chi tiết hoá đơn số #<?= $id ?></h4>
+    <div class="card" style="color: #8d0b0bff">
+        <div class="card-header">
+            <h4 class="card-title" style="color: #000000ff;">Chi tiết hoá đơn số #<?= $id ?></h4>
             <a href="index.php?action=listhoadon" class="btn btn-primary btn-sm" style="float:right;">Quay lại danh sách</a>
         </div>
         <div class="card-content">
             <div class="card-body">
 
-                <div class="form-body" style="background-color: #1c1f2b; padding: 20px; border-radius: 8px;">
+                <div class="form-body">
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label style="color: #e2e8f0; font-weight: 600;">Tên khách hàng</label>
-                                <input value="<?= $hoaDon['tenkhachhang'] ?>" type="text" class="form-control" readonly style="background-color: #2a2f40; color: #ffffff; border: 1px solid #3a3f50;">
+                                <label style="color: #f8f9fa;">Tên khách hàng</label>
+                                <input value="<?= $hoaDon['tenkhachhang'] ?>" type="text" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label style="color: #e2e8f0; font-weight: 600;">Số điện thoại</label>
-                                <input value="<?= $hoaDon['sdt'] ?>" type="text" class="form-control" readonly style="background-color: #2a2f40; color: #ffffff; border: 1px solid #3a3f50;">
+                                <label style="color: #f8f9fa;">Số điện thoại</label>
+                                <input value="<?= $hoaDon['sdt'] ?>" type="text" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label style="color: #e2e8f0; font-weight: 600;">Địa chỉ giao hàng</label>
-                                <input value="<?= $hoaDon['diachi'] ?>" type="text" class="form-control" readonly style="background-color: #2a2f40; color: #ffffff; border: 1px solid #3a3f50;">
+                                <label style="color: #f8f9fa;">Địa chỉ giao hàng</label>
+                                <input value="<?= $hoaDon['diachi'] ?>" type="text" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label style="color: #e2e8f0; font-weight: 600;">Ngày đặt</label>
-                                <input value="<?= $hoaDon['ngaygiodat'] ?>" type="text" class="form-control" readonly style="background-color: #2a2f40; color: #ffffff; border: 1px solid #3a3f50;">
+                                <label style="color: #f8f9fa;">Ngày đặt</label>
+                                <input value="<?= $hoaDon['ngaygiodat'] ?>" type="text" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label style="color: #e2e8f0; font-weight: 600;">Thanh toán</label>
-                                <input value="<?= $hoaDon['pttt'] == 0 ? "Tiền mặt (COD)" : "Chuyển khoản" ?>" type="text" class="form-control" readonly style="background-color: #2a2f40; color: #ffffff; border: 1px solid #3a3f50;">
+                                <label style="color: #f8f9fa;">Thanh toán</label>
+                                <input value="<?= $hoaDon['pttt'] == 0 ? "Tiền mặt (COD)" : "Chuyển khoản" ?>" type="text" class="form-control" readonly>
                             </div>
                         </div>
 
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label style="font-weight: bold; color: #ff2e63;">Cập nhật Trạng thái</label>
+                                <label style="font-weight: bold; color: #007bff;">Cập nhật Trạng thái</label>
                                 <form action="index.php?action=update_status" method="POST" class="d-flex gap-2">
                                     <input type="hidden" name="id" value="<?= $hoaDon['id'] ?>">
-                                    <select name="trangthai" id="select_trangthai" class="form-select" style="background-color: #2a2f40; color: #ffffff; border: 1px solid #3a3f50;">
+                                    <select name="trangthai" id="select_trangthai" class="form-select">
                                         <option value="0" <?= $hoaDon['trangthai'] == 0 ? 'selected' : '' ?>>Đơn hàng mới</option>
                                         <option value="1" <?= $hoaDon['trangthai'] == 1 ? 'selected' : '' ?>>Đang xử lý</option>
                                         <option value="2" <?= $hoaDon['trangthai'] == 2 ? 'selected' : '' ?>>Đang giao hàng</option>
@@ -60,19 +62,18 @@
                         </div>
                     </div>
                 </div>
+                <hr>
 
-                <hr style="border-color: #3a3f50;">
-
-                <h5 class="mt-4" style="color: #ffffff;">Sản phẩm đã mua</h5>
+                <h5 class="mt-4">Sản phẩm đã mua</h5>
                 <div class="table-responsive">
-                    <table class="table table-bordered mb-0" style="color: #ffffff; border-color: #3a3f50;">
-                        <thead style="background-color: #2a2f40;">
+                    <table class="table table-bordered mb-0">
+                        <thead class="table-light">
                             <tr>
-                                <th style="color: #ffffff;">Ảnh</th>
-                                <th style="color: #ffffff;">Tên sản phẩm</th>
-                                <th style="color: #ffffff;">Số lượng</th>
-                                <th style="color: #ffffff;">Đơn giá</th>
-                                <th style="color: #ffffff;">Thành tiền</th>
+                                <th>Ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá</th>
+                                <th>Thành tiền</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,21 +82,21 @@
                                 foreach ($allCTHD as $sp):
                                     $thanhTien = $sp['gia'] * $sp['soluong'];
                             ?>
-                                    <tr style="background-color: #1c1f2b;">
+                                    <tr>
                                         <td>
-                                            <img src="../admin/<?= htmlspecialchars($sp['img'] ?? '') ?>" width="50" style="object-fit: contain; border-radius: 4px;">
+                                            <img src="../admin/<?= htmlspecialchars($sp['img'] ?? '') ?>" width="50" style="object-fit: contain;">
                                         </td>
                                         <td><?= $sp['name'] ?></td>
                                         <td><?= $sp['soluong'] ?></td>
                                         <td><?= number_format($sp['gia']) ?> ₫</td>
-                                        <td style="font-weight:bold; color: #ff2e63;"><?= number_format($thanhTien) ?> ₫</td>
+                                        <td style="font-weight:bold; color: #d32f2f;"><?= number_format($thanhTien) ?> ₫</td>
                                     </tr>
                             <?php endforeach;
                             endif; ?>
 
-                            <tr style="background-color: #2a2f40;">
-                                <td colspan="4" class="text-end" style="font-weight: bold; color: #ffffff;">TỔNG THANH TOÁN:</td>
-                                <td style="font-weight: bold; color: #ff2e63; font-size: 1.2em;">
+                            <tr style="background-color: #f8f9fa;">
+                                <td colspan="4" class="text-end" style="font-weight: bold;">TỔNG THANH TOÁN:</td>
+                                <td style="font-weight: bold; color: #d32f2f; font-size: 1.2em;">
                                     <?= number_format($hoaDon['tongtien']) ?> VND
                                 </td>
                             </tr>
@@ -114,8 +115,11 @@
     var menu = document.getElementById('select_trangthai');
     for (var i = 0; i < menu.options.length; i++) {
         if (parseInt(menu.options[i].value) < trangThaiHienTai) {
-            menu.options[i].disabled = true;
-            menu.options[i].style.color = "#666"; // Màu xám cho option bị disable
+            menu.options[i].disabled = true; // Không cho chọn lại trạng thái cũ
+            menu.options[i].style.color = "#ccc";
         }
     }
 </script>
+<style>
+
+</style>

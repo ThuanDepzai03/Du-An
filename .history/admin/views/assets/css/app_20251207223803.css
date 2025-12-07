@@ -338,7 +338,7 @@ footer {
 }
 .card.card-statistic .card-title {
   text-transform: uppercase;
-  color: #000000;
+  color: #fff;
   letter-spacing: 0.8px;
   font-weight: 400;
   font-size: 1.3rem;
@@ -389,7 +389,7 @@ footer {
   color: #eee;
 }
 .card .card-img-overlay .card-title {
-  color: #fff;
+  color: #000000;
 }
 .pricing .card {
   box-shadow: none;

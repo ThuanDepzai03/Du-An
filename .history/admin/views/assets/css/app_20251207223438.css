@@ -1,3 +1,62 @@
+/* ===== NỀN TỔNG & CARD ===== */
+body,
+#main,
+.card {
+  background: #0f1117 !important;
+  color: #ffffff;
+}
+
+/* ===== TIÊU ĐỀ & TEXT ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+label,
+.breadcrumb-item,
+.breadcrumb-item a {
+  color: #ffffff !important;
+}
+
+/* ===== FORM INPUTS ===== */
+.form-control,
+.form-select {
+  background-color: #1c1f2b !important;
+  border: 1px solid #3a3f50 !important;
+  color: #ffffff !important;
+}
+
+/* ===== BẢNG (TABLE) ===== */
+.table {
+  background-color: #1c1f2b !important;
+  color: #ffffff !important;
+}
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #3a3f50 !important;
+}
+.table-light th {
+  /* Sửa màu header bảng cho hợp dark mode */
+  background-color: #2a2f40 !important;
+  color: #ffffff !important;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  /* Sửa màu dòng kẻ sọc */
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ===== NÚT ===== */
+.btn-primary,
+.btn-warning {
+  background: linear-gradient(90deg, #ff2e63, #ff4d7a) !important;
+  border: none !important;
+}
+.btn-primary:hover,
+.btn-warning:hover {
+  background: #ff4d7a !important;
+  box-shadow: 0 0 10px rgba(255, 46, 99, 0.5);
+}
+
 /* ===== NỀN TỔNG ===== */
 body {
   background: #0f1117 !important;
@@ -338,7 +397,7 @@ footer {
 }
 .card.card-statistic .card-title {
   text-transform: uppercase;
-  color: #000000;
+  color: #fff;
   letter-spacing: 0.8px;
   font-weight: 400;
   font-size: 1.3rem;

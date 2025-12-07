@@ -1,11 +1,11 @@
 <footer>
     <div class="footer clearfix mb-0 text-muted">
         <div class="float-start">
-            <p>2025 &copy; Electric Phone Store</p>
+            <p>2021 &copy; Mazer</p>
         </div>
         <div class="float-end">
             <p>Facebook admin <span class="text-danger"><i class="bi bi-heart"></i></span> : <a
-                    href="https://www.facebook.com/Theplay.Hacker.ss">Thuận</a></p>
+                    href="https://www.facebook.com/Theplay.Hacker.ss">A. Saugi</a></p>
         </div>
     </div>
 </footer>

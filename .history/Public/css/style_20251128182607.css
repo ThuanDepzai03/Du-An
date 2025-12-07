@@ -55,13 +55,6 @@ Table OF Contents
 	Typography
 \*----------------------------*/
 
-/* Sua logo */
-.header-logo img {
-  max-width: 180px; /* chỉnh to nhỏ tại đây */
-  width: 100%;
-  height: auto;
-}
-
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
