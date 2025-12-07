@@ -112,11 +112,14 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
         case "update_status":
             $hoaDon->update_status();
             break;
+        case "dashboard":
+            include "views/dashboard.php";
+            break;
 
         default:
-            $danhMuc->index();
+            include "views/dashboard.php";
             break;
     }
 } else {
-    $danhMuc->index();
+    include "views/dashboard.php";
 }

@@ -1,0 +1,100 @@
+<?php include_once("views/layouts/header.php"); ?>
+
+<div class="page-heading">
+    <h3 class="mb-4">Hệ thống AE STORE</h3>
+</div>
+
+<div class="page-content">
+
+    <div class="row mb-4">
+        <div class="col-6 col-lg-3">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Doanh thu</h6>
+                    <h4 class="font-extrabold mb-0">120.5M ₫</h4>
+                </div>
+                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;"><i class="bi bi-cash-stack"></i></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Đơn hàng</h6>
+                    <h4 class="font-extrabold mb-0">354</h4>
+                </div>
+                <div class="stats-icon" style="background: rgba(13, 202, 240, 0.2); color: #0dcaf0;"><i class="bi bi-cart-check"></i></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Sản phẩm</h6>
+                    <h4 class="font-extrabold mb-0">1,200</h4>
+                </div>
+                <div class="stats-icon" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;"><i class="bi bi-phone"></i></div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Thành viên</h6>
+                    <h4 class="font-extrabold mb-0">5</h4>
+                </div>
+                <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;"><i class="bi bi-people-fill"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mb-4" style="border-left: 5px solid #ff2e63; padding-left: 15px;">Team AE Store</h4>
+    <div class="row">
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="member-card">
+                <img src="image/imgAdmin/mthuan.jpg" class="member-img">
+                <h5 class="member-name">Minh Thuận</h5>
+                <span class="role-badge">Leader / Backend</span>
+                <p class="member-task">Quản lý dự án, thiết kế database, thiết kế trang quản trị, thêm quản trị viên và quản lý người dùng, quản lý hóa đơn, trang quản trị Dark Mode.</p>
+                <div class="social-links"><a href="https://www.facebook.com/Theplay.Hacker.ss"><i class="bi bi-facebook"></i></a><a href="https://github.com/ThuanDepzai03"><i class="bi bi-github"></i></a></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="member-card">
+                <img src="image/imgAdmin/dkiet.jpg" class="member-img">
+                <h5 class="member-name">Đức Kiệt</h5>
+                <span class="role-badge">Document</span>
+                <p class="member-task">Lên ý tưởng dự án, chỉnh sửa, chủ đạo viết chính cho Document</p>
+                <div class="social-links"><a href="https://www.facebook.com/kiet.uc.527593#"><i class="bi bi-facebook"></i></a></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="member-card">
+                <img src="image/imgAdmin/qson.jpg" class="member-img">
+                <h5 class="member-name">Quang Sơn</h5>
+                <span class="role-badge">Front-end</span>
+                <p class="member-task">Thiết kế Giao diện cửa hàng, thêm chức năng cho cửa hàng và sản phẩm.</p>
+                <div class="social-links"><a href="https://www.facebook.com/sad.boiz.see.tynk"><i class="bi bi-facebook"></i></a></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="member-card">
+                <img src="image/imgAdmin/thieu.jpg" class="member-img">
+                <h5 class="member-name">Trung Hiếu</h5>
+                <span class="role-badge">Front-end</span>
+                <p class="member-task">Thiết kế UI/UX giao diện trang chủ, xử lý logic thanh toán và giỏ hàng.</p>
+                <div class="social-links"><a href="https://www.facebook.com/checker.yea.9"><i class="bi bi-facebook"></i></a></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="member-card">
+                <img src="image/imgAdmin/mhieu.jpg" class="member-img">
+                <h5 class="member-name">Minh Hiếu</h5>
+                <span class="role-badge">Document</span>
+                <p class="member-task">Thiết kế UI/UX giao diện trang chủ, trang quản trị Dark Mode.</p>
+                <div class="social-links"><a href="#"><i class="bi bi-facebook"></i></a></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<?php include_once("views/layouts/footer.php"); ?>
