@@ -46,11 +46,4 @@ class UserModel
         $sql = "DELETE FROM nguoidung WHERE id=?";
         pdo_execute($sql, $id);
     }
-    //  Đếm tổng thành viên
-    public function getCount()
-    {
-        $sql = "SELECT count(*) as total FROM nguoidung";
-        $row = pdo_query_one($sql);
-        return $row['total'];
-    }
 }

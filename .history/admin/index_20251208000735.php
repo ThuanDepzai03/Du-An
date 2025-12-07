@@ -113,44 +113,13 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $hoaDon->update_status();
             break;
         case "dashboard":
-            // 1. Khởi tạo các Model
-            $spModel = new SanPham();
-            $hdModel = new HoaDon();
-            $userModel = new UserModel();
-
-            // 2. Lấy số liệu thực tế
-            $countSanPham = $spModel->getCount();        // Số sản phẩm
-            $countDonHang = $hdModel->getCount();        // Số đơn hàng
-            $countUser    = $userModel->getCount();      // Số thành viên
-            $doanhThu     = $hdModel->getRevenue();      // Tổng doanh thu
-
             include "views/dashboard.php";
             break;
 
         default:
-            // Copy y hệt đoạn trên vào default để khi vào trang chủ cũng hiện đúng số
-            $spModel = new SanPham();
-            $hdModel = new HoaDon();
-            $userModel = new UserModel();
-
-            $countSanPham = $spModel->getCount();
-            $countDonHang = $hdModel->getCount();
-            $countUser    = $userModel->getCount();
-            $doanhThu     = $hdModel->getRevenue();
-
             include "views/dashboard.php";
             break;
     }
 } else {
-    // Initialize models and variables for the dashboard view when no action is present
-    $spModel = new SanPham();
-    $hdModel = new HoaDon();
-    $userModel = new UserModel();
-
-    $countSanPham = $spModel->getCount();
-    $countDonHang = $hdModel->getCount();
-    $countUser    = $userModel->getCount();
-    $doanhThu     = $hdModel->getRevenue();
-
     include "views/dashboard.php";
 }

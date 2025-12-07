@@ -142,15 +142,5 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             break;
     }
 } else {
-    // Initialize models and variables for the dashboard view when no action is present
-    $spModel = new SanPham();
-    $hdModel = new HoaDon();
-    $userModel = new UserModel();
-
-    $countSanPham = $spModel->getCount();
-    $countDonHang = $hdModel->getCount();
-    $countUser    = $userModel->getCount();
-    $doanhThu     = $hdModel->getRevenue();
-
     include "views/dashboard.php";
 }

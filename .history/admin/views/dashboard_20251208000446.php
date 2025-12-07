@@ -7,60 +7,40 @@
 <div class="page-content">
 
     <div class="row mb-4">
-
-        <div class="col-6 col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <div class="stats-card">
                 <div>
                     <h6 class="text-muted font-semibold">Doanh thu</h6>
-                    <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($doanhThu) ?> ₫
-                    </h4>
+                    <h4 class="font-extrabold mb-0">120.5M ₫</h4>
                 </div>
-                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
-                    <i class="bi bi-cash-stack"></i>
-                </div>
+                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;"><i class="bi bi-cash-stack"></i></div>
             </div>
         </div>
-
-        <div class="col-6 col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <div class="stats-card">
                 <div>
                     <h6 class="text-muted font-semibold">Đơn hàng</h6>
-                    <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($countDonHang) ?>
-                    </h4>
+                    <h4 class="font-extrabold mb-0">354</h4>
                 </div>
-                <div class="stats-icon" style="background: rgba(13, 202, 240, 0.2); color: #0dcaf0;">
-                    <i class="bi bi-cart-check"></i>
-                </div>
+                <div class="stats-icon" style="background: rgba(13, 202, 240, 0.2); color: #0dcaf0;"><i class="bi bi-cart-check"></i></div>
             </div>
         </div>
-
-        <div class="col-6 col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <div class="stats-card">
                 <div>
                     <h6 class="text-muted font-semibold">Sản phẩm</h6>
-                    <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($countSanPham) ?>
-                    </h4>
+                    <h4 class="font-extrabold mb-0">1,200</h4>
                 </div>
-                <div class="stats-icon" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;">
-                    <i class="bi bi-phone"></i>
-                </div>
+                <div class="stats-icon" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;"><i class="bi bi-phone"></i></div>
             </div>
         </div>
-
-        <div class="col-6 col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <div class="stats-card">
                 <div>
                     <h6 class="text-muted font-semibold">Thành viên</h6>
-                    <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($countUser) ?>
-                    </h4>
+                    <h4 class="font-extrabold mb-0">5</h4>
                 </div>
-                <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;">
-                    <i class="bi bi-people-fill"></i>
-                </div>
+                <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;"><i class="bi bi-people-fill"></i></div>
             </div>
         </div>
     </div>
