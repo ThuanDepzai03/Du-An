@@ -37,47 +37,39 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item <?= (!isset($_GET['action']) || $_GET['action'] == 'dashboard') ? 'active' : '' ?>">
-                            <a href="index.php?action=dashboard" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item <?= (isset($_GET['action']) && str_contains($_GET['action'], 'danhmuc')) ? 'active' : '' ?>">
+                        <li
+                            class="sidebar-item <?= str_contains($_SERVER['REQUEST_URI'], "danhmuc") ? 'active' : '' ?>">
                             <a href="index.php?action=listdanhmuc" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                                 <span>Danh mục</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item <?= (isset($_GET['action']) && str_contains($_GET['action'], 'sanpham')) ? 'active' : '' ?>">
+                        <li
+                            class="sidebar-item <?= str_contains($_SERVER['REQUEST_URI'], "sanpham") ? 'active' : '' ?>">
                             <a href="index.php?action=listsanpham" class='sidebar-link'>
-                                <i class="bi bi-phone"></i>
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                                 <span>Sản phẩm</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item <?= (isset($_GET['action']) && $_GET['action'] == 'createuser') ? 'active' : '' ?>">
+                        <li class="sidebar-item" <?= str_contains($_SERVER['REQUEST_URI'], "createuser") ? 'active' : '' ?>>
                             <a href="index.php?action=createuser" class='sidebar-link'>
                                 <i class="bi bi-person-plus-fill"></i>
                                 <span>Thêm tài khoản</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item <?= (isset($_GET['action']) && ($_GET['action'] == 'listuser' || $_GET['action'] == 'edituser')) ? 'active' : '' ?>">
+                        <li class="sidebar-item" <?= (isset($_GET['action']) && ($_GET['action'] == 'listuser' || $_GET['action'] == 'edituser')) ? 'active' : '' ?>">
                             <a href="index.php?action=listuser" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Danh sách tài khoản</span>
+                                <i class="bi bi-people-fill"></i> <span>Danh sách tài khoản</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="index.php?action=listhoadon" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i> <span>Danh sách hoá don</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item <?= (isset($_GET['action']) && ($_GET['action'] == 'listhoadon' || $_GET['action'] == 'chitiethoadon')) ? 'active' : '' ?>">
-                            <a href="index.php?action=listhoadon" class='sidebar-link'>
-                                <i class="bi bi-receipt"></i>
-                                <span>Danh sách hoá đơn</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
