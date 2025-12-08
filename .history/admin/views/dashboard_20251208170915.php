@@ -25,7 +25,7 @@
         <div class="col-6 col-lg-3 col-md-6">
             <div class="stats-card">
                 <div>
-                    <h6 class="text-muted font-semibold ">Đơn hàng</h6>
+                    <h6 href="index.php?action=listhoadon" class="text-muted font-semibold <?= (isset($_GET['action']) && ($_GET['action'] == 'listhoadon' || $_GET['action'] == 'chitiethoadon')) ? 'active' : '' ?>">Đơn hàng</h6>
                     <h4 class="font-extrabold mb-0" style="color:#fff">
                         <?= number_format($countDonHang) ?>
                     </h4>
