@@ -23,22 +23,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-lg-3 col-md-6">
-            <div class="stats-card">
-                <div>
-                    <h6 class="text-muted font-semibold">Tổng doanh thu</h6>
-                    <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($tongDoanhThu) ?> ₫
-                    </h4>
-                    <span style="font-size: 0.8rem; color: #a0aec0;">
-                        Hôm nay: <b style="color: #ff2e63;"><?= number_format($doanhThuHomNay) ?> ₫</b>
-                    </span>
-                </div>
-                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
-                    <i class="bi bi-cash-stack"></i>
-                </div>
-            </div>
-        </div>
 
         <div class="col-6 col-lg-3 col-md-6">
             <div class="stats-card">
