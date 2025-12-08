@@ -83,13 +83,6 @@ class HoaDon
         $row = pdo_query_one($sql);
         return $row['total'] ?? 0;
     }
-    public function getTongDoanhThu()
-    {
-        $sql = "SELECT SUM(tongtien) as total FROM hoadon 
-                WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 9999 DAY)";
-        $row = pdo_query_one($sql);
-        return $row['total'] ?? 0;
-    }
 
     // 3. (Cập nhật) Lấy dữ liệu biểu đồ cho 30 NGÀY (Thay vì 7 ngày)
     public function getDuLieuBieuDo30Day()

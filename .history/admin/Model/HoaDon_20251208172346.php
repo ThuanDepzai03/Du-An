@@ -70,7 +70,7 @@ class HoaDon
     public function getDoanhThuHomNay()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon 
-                WHERE trangthai = 2 AND DATE(ngaygiodat) = CURDATE()";
+                WHERE trangthai = 3 AND DATE(ngaygiodat) = CURDATE()";
         $row = pdo_query_one($sql);
         return $row['total'] ?? 0;
     }
@@ -79,14 +79,7 @@ class HoaDon
     public function getDoanhThu30DayAgo()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon 
-                WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)";
-        $row = pdo_query_one($sql);
-        return $row['total'] ?? 0;
-    }
-    public function getTongDoanhThu()
-    {
-        $sql = "SELECT SUM(tongtien) as total FROM hoadon 
-                WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 9999 DAY)";
+                WHERE trangthai = 3 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)";
         $row = pdo_query_one($sql);
         return $row['total'] ?? 0;
     }
@@ -96,8 +89,8 @@ class HoaDon
     {
         $sql = "SELECT DATE(ngaygiodat) as ngay, SUM(tongtien) as tong_tien 
                 FROM hoadon 
-                WHERE trangthai = 2 
-                AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 10000 DAY)
+                WHERE trangthai = 3 
+                AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
                 GROUP BY DATE(ngaygiodat)
                 ORDER BY ngay ASC";
         return pdo_query($sql);

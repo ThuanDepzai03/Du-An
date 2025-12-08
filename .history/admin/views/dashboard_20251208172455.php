@@ -7,29 +7,15 @@
 <div class="page-content">
 
     <div class="row mb-4">
+
         <div class="col-6 col-lg-3 col-md-6">
             <div class="stats-card">
                 <div>
-                    <h6 class="text-muted font-semibold">Doanh thu (Tháng)</h6>
+                    <h6 class="text-muted font-semibold">Doanh thu (30 ngày)</h6>
                     <h4 class="font-extrabold mb-0" style="color:#fff">
                         <?= number_format($doanhThuThang) ?> ₫
                     </h4>
-                    <span style="font-size: 0.8rem; color: #a0aec0;">
-                        Hôm nay: <b style="color: #ff2e63;"><?= number_format($doanhThuHomNay) ?> ₫</b>
-                    </span>
-                </div>
-                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
-                    <i class="bi bi-cash-stack"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-lg-3 col-md-6">
-            <div class="stats-card">
-                <div>
-                    <h6 class="text-muted font-semibold">Tổng doanh thu</h6>
-                    <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($tongDoanhThu) ?> ₫
-                    </h4>
+
                     <span style="font-size: 0.8rem; color: #a0aec0;">
                         Hôm nay: <b style="color: #ff2e63;"><?= number_format($doanhThuHomNay) ?> ₫</b>
                     </span>
@@ -43,7 +29,7 @@
         <div class="col-6 col-lg-3 col-md-6">
             <div class="stats-card">
                 <div>
-                    <h6 class="text-muted font-semibold">Đơn hàng</h6>
+                    <h6 class="text-muted font-semibold ">Đơn hàng</h6>
                     <h4 class="font-extrabold mb-0" style="color:#fff">
                         <?= number_format($countDonHang) ?>
                     </h4>
@@ -78,19 +64,6 @@
                 </div>
                 <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;">
                     <i class="bi bi-people-fill"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card" style="background-color: #1c1f2b; color: #fff;">
-                <div class="card-header" style="background-color: #1c1f2b; border-bottom: 1px solid #3a3f50;">
-                    <h4 style="color: #fff;">Biểu đồ doanh thu (30 ngày gần nhất)</h4>
-                </div>
-                <div class="card-body">
-                    <canvas id="revenueChart" style="height: 350px;"></canvas>
                 </div>
             </div>
         </div>
@@ -143,64 +116,9 @@
                 <div class="social-links"><a href="#"><i class="bi bi-facebook"></i></a></div>
             </div>
         </div>
+
+
     </div>
 </div>
 
 <?php include_once("views/layouts/footer.php"); ?>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // Lấy dữ liệu từ PHP
-    const labels = <?= $jsonLabels ?>;
-    const data = <?= $jsonValues ?>;
-
-    const ctx = document.getElementById('revenueChart').getContext('2d');
-    const revenueChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Doanh thu (VND)',
-                data: data,
-                backgroundColor: 'rgba(255, 46, 99, 0.2)',
-                borderColor: '#ff2e63',
-                borderWidth: 2,
-                pointBackgroundColor: '#ffffff',
-                pointBorderColor: '#ff2e63',
-                pointRadius: 4,
-                fill: true,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: '#ffffff'
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: '#2a2f40'
-                    },
-                    ticks: {
-                        color: '#a0aec0'
-                    }
-                },
-                x: {
-                    grid: {
-                        color: '#2a2f40'
-                    },
-                    ticks: {
-                        color: '#a0aec0'
-                    }
-                }
-            }
-        }
-    });
-</script>

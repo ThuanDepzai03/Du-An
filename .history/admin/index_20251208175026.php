@@ -155,7 +155,6 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
     // 3. Get Revenue Data (This fixes the "Undefined variable" error)
     $doanhThuHomNay = $hdModel->getDoanhThuHomNay();
     $doanhThuThang  = $hdModel->getDoanhThu30DayAgo();
-    $tongDoanhThu = $hdModel->getTongDoanhThu();
 
     // 4. Get Chart Data (Required for the chart to work)
     $revenueData = $hdModel->getDuLieuBieuDo30Day();

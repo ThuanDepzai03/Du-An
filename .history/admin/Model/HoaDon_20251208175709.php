@@ -86,7 +86,7 @@ class HoaDon
     public function getTongDoanhThu()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon 
-                WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 9999 DAY)";
+                WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 9999999999999999999 DAY)";
         $row = pdo_query_one($sql);
         return $row['total'] ?? 0;
     }

@@ -142,33 +142,15 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             break;
     }
 } else {
-    // 1. Initialize Models
+    // Initialize models and variables for the dashboard view when no action is present
     $spModel = new SanPham();
     $hdModel = new HoaDon();
     $userModel = new UserModel();
 
-    // 2. Get Count Data
     $countSanPham = $spModel->getCount();
     $countDonHang = $hdModel->getCount();
     $countUser    = $userModel->getCount();
-
-    // 3. Get Revenue Data (This fixes the "Undefined variable" error)
-    $doanhThuHomNay = $hdModel->getDoanhThuHomNay();
-    $doanhThuThang  = $hdModel->getDoanhThu30DayAgo();
-    $tongDoanhThu = $hdModel->getTongDoanhThu();
-
-    // 4. Get Chart Data (Required for the chart to work)
-    $revenueData = $hdModel->getDuLieuBieuDo30Day();
-    $chartLabels = [];
-    $chartValues = [];
-
-    foreach ($revenueData as $data) {
-        $chartLabels[] = date("d/m", strtotime($data['ngay']));
-        $chartValues[] = (int)$data['tong_tien'];
-    }
-
-    $jsonLabels = json_encode($chartLabels);
-    $jsonValues = json_encode($chartValues);
+    $doanhThu     = $hdModel->getDoanhThu();
 
     include "views/dashboard.php";
 }
