@@ -40,6 +40,7 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             break;
         case 'checkoutsubmit':  
             $checkoutController->checkout();
+            break;
         case 'about':
             $homeController->about();
             break;
@@ -49,6 +50,18 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
          case 'detail':
             $productController->detail();   // <-- thêm dòng này
             break;
+        case "updatecart":
+        $cartController->update($_POST['id'], $_POST['qty']);
+        break;
+
+        case 'momo':
+            include_once "./Views/checkout_qr.php";
+        break;
+
+        case 'success':
+            include_once "./Views/success.php";
+            break;
+
         default:
             echo "<h1>404 Not Found</h1>";
             break;

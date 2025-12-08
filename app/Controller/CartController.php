@@ -8,18 +8,17 @@ class CartController {
     public function __construct() {
         $this->cartModel = new CartModel();
 
-        // Start session only once
+
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        // Initialize cart session if not exist
+      
         if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
     }
 
-    // Add product to cart
     public function add() {
         if (!isset($_GET['idsp'])) {
             return;
@@ -43,17 +42,17 @@ class CartController {
             ];
         }
 
-        // Redirect back to cart (tùy bạn)
         header("Location: index.php?action=showcart");
         exit;
     }
 
-    // Remove item from cart
-    public function remove($idSP) {
+
+        public function update($id, $qty) {
+        if ($qty < 1) $qty = 1;
+
         foreach ($_SESSION['cart'] as $key => $item) {
-            if ($item['id'] == $idSP) {
-                unset($_SESSION['cart'][$key]);
-                $_SESSION['cart'] = array_values($_SESSION['cart']);
+            if ($item['id'] == $id) {
+                $_SESSION['cart'][$key]['soLuong'] = $qty;
                 break;
             }
         }
@@ -62,17 +61,7 @@ class CartController {
         exit;
     }
 
-    // Update quantity
-    public function update($idSP, $soLuong) {
-        foreach ($_SESSION['cart'] as $key => $item) {
-            if ($item['id'] == $idSP) {
-                $_SESSION['cart'][$key]['soLuong'] = max(1, intval($soLuong));
-                break;
-            }
-        }
-    }
 
-    // Load cart page
     public function index() {
 
         foreach ($_SESSION['cart'] as $key => $item) {
@@ -83,12 +72,12 @@ class CartController {
                 $_SESSION['cart'][$key]['price'] = $product['price'];
                 $_SESSION['cart'][$key]['img'] = $product['img'];
             } else {
-                // Remove invalid product
+               
                 unset($_SESSION['cart'][$key]);
             }
         }
 
-        // Re-index
+       
         $_SESSION['cart'] = array_values($_SESSION['cart']);
 
         include_once("./Views/cart.php");
