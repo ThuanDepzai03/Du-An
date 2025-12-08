@@ -12,40 +12,64 @@ foreach ($_SESSION['cart'] as $item) {
     <h1 class="mb-4 text-center">🛒 Giỏ Hàng Của Bạn</h1>
 
     <div class="card shadow-sm">
-        <div class="card-header bg-light">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Các Sản Phẩm Trong Giỏ</h5>
         </div>
+
         <div class="card-body p-0">
             <table class="table align-middle table-borderless m-0">
                 <thead class="bg-light">
                     <tr>
-                        <th scope="col" class="col-6">Sản Phẩm</th>
-                        <th scope="col" class="text-center col-2">Đơn Giá</th>
-                        <th scope="col" class="text-center col-2">Số Lượng</th>
-                        <th scope="col" class="text-end col-2">Thành Tiền</th>
+                        <th class="col-5">Sản Phẩm</th>
+                        <th class="text-center col-2">Đơn Giá</th>
+                        <th class="text-center col-2">Số Lượng</th>
+                        <th class="text-end col-2">Thành Tiền</th>
+                        <th class="text-center col-1">Xóa</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php foreach($_SESSION['cart'] as $item): ?>
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="/admin/<?= htmlspecialchars($item['img']) ?>" class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;" alt="<?= htmlspecialchars($item['name']) ?>">
+                                <img src="/admin/<?= htmlspecialchars($item['img']) ?>" 
+                                     class="rounded me-3" 
+                                     style="width: 80px; height: 80px; object-fit: cover;">
                                 <div>
                                     <h6 class="mb-0"><?= htmlspecialchars($item['name']) ?></h6>
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center fw-bold text-success"><?= number_format($item['price']) ?>₫</td>
-                        <td class="text-center"><?= $item['soLuong'] ?></td>
-                        <td class="text-end fw-bold text-danger"><?= number_format($item['price'] * $item['soLuong']) ?>₫</td>
+
+                        <td class="text-center fw-bold text-success">
+                            <?= number_format($item['price']) ?>₫
+                        </td>
+
+                        <td class="text-center">
+                            <form action="index.php?action=updatecart" method="POST" class="d-flex justify-content-center">
+                                <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                                <input type="number" name="qty" min="1" 
+                                       value="<?= $item['soLuong'] ?>" 
+                                       class="form-control text-center" 
+                                       style="width: 60px;">
+                                <button class="btn btn-sm btn-outline-primary ms-2">Lưu</button>
+                            </form>
+                        </td>
+
+                        <td class="text-end fw-bold text-danger">
+                            <?= number_format($item['price'] * $item['soLuong']) ?>₫
+                        </td>
+
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
+
                 <tfoot>
                     <tr>
                         <td colspan="3" class="text-end fw-bold">Tổng tiền:</td>
                         <td class="text-end fw-bold text-danger"><?= number_format($tongTien) ?>₫</td>
+                        <td></td>
                     </tr>
                 </tfoot>
             </table>
@@ -53,7 +77,9 @@ foreach ($_SESSION['cart'] as $item) {
     </div>
 
     <div class="mt-4 text-end">
-        <a href="index.php?action=showcheckout" class="btn btn-primary btn-lg">Thanh toán</a>
+        <a href="index.php?action=showcheckout" class="btn btn-primary btn-lg">
+            Thanh Toán
+        </a>
     </div>
 </div>
 

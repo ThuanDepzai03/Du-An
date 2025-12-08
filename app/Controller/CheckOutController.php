@@ -13,12 +13,12 @@ class CheckOutController {
         $this->cartModel = new CartModel();
     }
 
-    // Hiển thị trang thanh toán
+    // Hiển thị trang checkout
     public function showCheckout() {
 
         $cart = $_SESSION['cart'] ?? [];
 
-        // Lấy thông tin sản phẩm từ DB
+        // Lấy dữ liệu sản phẩm từ DB
         foreach ($cart as $key => $item) {
             $product = $this->cartModel->getAllProductById($item['id']);
 
@@ -32,8 +32,7 @@ class CheckOutController {
         include_once("./Views/checkout.php");
     }
 
-
-    // Xử lý đặt hàng
+    // Xử lý nút "Thanh toán"
     public function checkout() {
 
         if (empty($_SESSION['cart'])) {
@@ -57,7 +56,7 @@ class CheckOutController {
             $tongTien += $item['price'] * $item['soLuong'];
         }
 
-        // Lưu hóa đơn
+        // ⭐ TẠO HÓA ĐƠN TRƯỚC
         $hoaDonId = $this->cartModel->insertHoaDon($ten, $diaChi, $sdt, $tongTien, $pttt);
 
         // Lưu chi tiết hóa đơn
@@ -65,14 +64,31 @@ class CheckOutController {
             $this->cartModel->insertCTHoaDon($hoaDonId, $item['id'], $item['soLuong'], $item['price']);
         }
 
-        // Xóa giỏ hàng
-        $_SESSION['cart'] = [];
+        // Nếu thanh toán online → chuyển sang trang QR
+        if ($pttt == 1) {
 
+            // 1. Tạo hóa đơn trước, trạng thái: 0 = chờ thanh toán
+            $hoaDonId = $this->cartModel->insertHoaDon($ten, $diaChi, $sdt, $tongTien, $pttt);
+
+            // 2. Lưu chi tiết hóa đơn
+            foreach ($_SESSION['cart'] as $item) {
+                $this->cartModel->insertCTHoaDon($hoaDonId, $item['id'], $item['soLuong'], $item['price']);
+            }
+
+            // 3. Chuyển sang trang QR
+            header("Location: index.php?action=momo&amount={$tongTien}&order={$hoaDonId}");
+            exit;
+        }
+
+
+        // Nếu thanh toán COD
+        $_SESSION['cart'] = [];
         echo "<script>
-                alert('Đặt hàng thành công!');
+                alert('Đặt hàng thành công (Thanh toán khi nhận hàng)!');
                 window.location.href='index.php?action=home';
               </script>";
     }
+
 }
 
 ?>
