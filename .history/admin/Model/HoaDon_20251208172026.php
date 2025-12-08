@@ -67,29 +67,29 @@ class HoaDon
         return $row['total'] ?? 0; // Nếu chưa có đơn nào thì trả về 0
     }
     // 1. Tính doanh thu HÔM NAY
-    public function getDoanhThuHomNay()
+    public function getRevenueToday()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon 
-                WHERE trangthai = 2 AND DATE(ngaygiodat) = CURDATE()";
+                WHERE trangthai = 3 AND DATE(ngaygiodat) = CURDATE()";
         $row = pdo_query_one($sql);
         return $row['total'] ?? 0;
     }
 
-    // 2. Tính doanh thu 30 NGÀAY GẦN NHẤT (1 Tháng)
-    public function getDoanhThu30DayAgo()
+    // 2. Tính doanh thu 30 NGÀY GẦN NHẤT (1 Tháng)
+    public function getRevenueLast30Days()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon 
-                WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)";
+                WHERE trangthai = 3 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)";
         $row = pdo_query_one($sql);
         return $row['total'] ?? 0;
     }
 
     // 3. (Cập nhật) Lấy dữ liệu biểu đồ cho 30 NGÀY (Thay vì 7 ngày)
-    public function getDuLieuBieuDo30Day()
+    public function getChartData30Days()
     {
         $sql = "SELECT DATE(ngaygiodat) as ngay, SUM(tongtien) as tong_tien 
                 FROM hoadon 
-                WHERE trangthai = 2 
+                WHERE trangthai = 3 
                 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
                 GROUP BY DATE(ngaygiodat)
                 ORDER BY ngay ASC";

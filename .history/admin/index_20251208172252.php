@@ -124,11 +124,11 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $countUser    = $userModel->getCount();
 
             // --- PHẦN MỚI: LẤY DOANH THU ---
-            $doanhThuHomNay = $hdModel->getDoanhThuHomNay();      // Doanh thu hôm nay
-            $doanhThuThang  = $hdModel->getDoanhThu30DayAgo(); // Doanh thu 30 ngày
+            $doanhThuHomNay = $hdModel->getRevenueToday();      // Doanh thu hôm nay
+            $doanhThuThang  = $hdModel->getRevenueLast30Days(); // Doanh thu 30 ngày
 
             // --- PHẦN MỚI: DỮ LIỆU BIỂU ĐỒ 30 NGÀY ---
-            $revenueData = $hdModel->getDuLieuBieuDo30Day();
+            $revenueData = $hdModel->getChartData30Days();
             $chartLabels = [];
             $chartValues = [];
             foreach ($revenueData as $data) {
@@ -147,25 +147,10 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
     $hdModel = new HoaDon();
     $userModel = new UserModel();
 
-    // 1. Lấy số liệu đếm
     $countSanPham = $spModel->getCount();
     $countDonHang = $hdModel->getCount();
     $countUser    = $userModel->getCount();
-
-    // 2. Lấy doanh thu (THÊM ĐOẠN NÀY ĐỂ HẾT LỖI)
-    $doanhThuHomNay = $hdModel->getDoanhThuHomNay();      // Doanh thu hôm nay
-    $doanhThuThang  = $hdModel->getDoanhThu30DayAgo(); // Doanh thu 30 ngày
-
-    // 3. Lấy dữ liệu biểu đồ (THÊM ĐOẠN NÀY LUÔN ĐỂ BIỂU ĐỒ CHẠY)
-    $revenueData = $hdModel->getDuLieuBieuDo30Day();
-    $chartLabels = [];
-    $chartValues = [];
-    foreach ($revenueData as $data) {
-        $chartLabels[] = date("d/m", strtotime($data['ngay']));
-        $chartValues[] = (int)$data['tong_tien'];
-    }
-    $jsonLabels = json_encode($chartLabels);
-    $jsonValues = json_encode($chartValues);
+    $doanhThu     = $hdModel->getDoanhThu();
 
     include "views/dashboard.php";
 }
