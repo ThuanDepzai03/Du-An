@@ -62,7 +62,7 @@ class HoaDon
     // Tính tổng doanh thu (Chỉ tính đơn đã hoàn thành/giao hàng thành công - trạng thái = 3)
     public function getDoanhThu()
     {
-        $sql = "SELECT SUM(tongtien) as total FROM hoadon WHERE trangthai = 2";
+        $sql = "SELECT SUM(tongtien) as total FROM hoadon WHERE trangthai = 3";
         $row = pdo_query_one($sql);
         return $row['total'] ?? 0; // Nếu chưa có đơn nào thì trả về 0
     }

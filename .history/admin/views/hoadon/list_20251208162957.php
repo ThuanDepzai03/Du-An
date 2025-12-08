@@ -54,6 +54,7 @@ include_once("views/layouts/header.php");
         </div>
 
     </section>
+
 </div>
 <?php
 include_once("views/layouts/footer.php");
