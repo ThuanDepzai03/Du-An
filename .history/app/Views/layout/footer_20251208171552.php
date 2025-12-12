@@ -9,7 +9,7 @@
 				<div class="col-md-3 col-xs-6">
 					<div class="footer">
 						<h3 class="footer-title">VỀ CHÚNG TÔI</h3>
-						<p>AE Phoenic Store</p>
+						<p>Electro Store</p>
 						<ul class="footer-links">
 							<li><a href="#"><i class="fa fa-map-marker"></i>Hải Phòng, Việt Nam </a></li>
 							<li><a href="#"><i class="fa fa-phone"></i>0987 654 321</a></li>
@@ -83,7 +83,7 @@
 					<span class="copyright">
 						© <script>
 							document.write(new Date().getFullYear());
-						</script>AE Phoenic Store. All rights reserved
+						</script> Son Store. All rights reserved
 					</span>
 				</div>
 			</div>

@@ -16,6 +16,8 @@ $checkoutController = new CheckOutController();
 $productController = new ProductController();
 
 
+// Phần Header thường nên để Controller gọi bên trong hàm view, 
+// nhưng nếu bạn để ở đây thì nó sẽ hiện cho tất cả các trang.
 include_once("Views/layout/header.php");
 
 if (isset($_GET['action']) && $_GET['action'] != "") {

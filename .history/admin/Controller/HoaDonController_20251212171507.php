@@ -10,7 +10,7 @@ class HoaDonController
         $this->hoaDon = new HoaDon();
     }
 
-    // --- PHƯƠNG THỨC LIST (LỌC) ---
+    // --- PHƯƠNG THỨC LIST (ĐÃ SỬA ĐỂ LỌC) ---
     public function index()
     {
         // 1. Lấy dữ liệu từ URL (Form tìm kiếm gửi lên)
