@@ -108,7 +108,7 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $hoaDon->update_status();
             break;
 
-        // --- DASHBOARD---
+        // --- DASHBOARD (XỬ LÝ CHÍNH Ở ĐÂY) ---
         case "dashboard":
         default:
             // 1. Khởi tạo Model
