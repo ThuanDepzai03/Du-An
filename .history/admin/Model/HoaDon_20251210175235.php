@@ -101,14 +101,4 @@ class HoaDon
                 GROUP BY DATE_FORMAT(ngaygiodat, '%Y-%m') ORDER BY thang ASC";
         return pdo_query($sql);
     }
-    public function getDuLieuBieuDo999Day()
-    {
-        $sql = "SELECT DATE(ngaygiodat) as ngay, SUM(tongtien) as tong_tien 
-                FROM hoadon 
-                WHERE trangthai = 2 
-                AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 999 DAY)
-                GROUP BY DATE(ngaygiodat) 
-                ORDER BY ngay ASC";
-        return pdo_query($sql);
-    }
 }

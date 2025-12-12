@@ -5,87 +5,34 @@
 </div>
 
 <div class="page-content">
-    <div class="row mb-4">
-
-        <!-- Đơn hàng -->
-        <div class="col-12 col-lg-4 col-md-6">
-            <a href="index.php?action=listhoadon" style="text-decoration:none">
-                <div class="stats-card">
-                    <div>
-                        <h6 class="text-muted font-semibold">Đơn hàng</h6>
-                        <h4 class="font-extrabold mb-0" style="color:#fff">
-                            <?= number_format($countDonHang) ?>
-                        </h4>
-                    </div>
-                    <div class="stats-icon" style="background: rgba(13, 202, 240, 0.2); color: #0dcaf0;">
-                        <i class="bi bi-cart-check"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Sản phẩm -->
-        <div class="col-12 col-lg-4 col-md-6">
-            <a href="index.php?action=listsanpham" style="text-decoration:none">
-                <div class="stats-card">
-                    <div>
-                        <h6 class="text-muted font-semibold">Sản phẩm</h6>
-                        <h4 class="font-extrabold mb-0" style="color:#fff">
-                            <?= number_format($countSanPham) ?>
-                        </h4>
-                    </div>
-                    <div class="stats-icon" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;">
-                        <i class="bi bi-phone"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Thành viên -->
-        <div class="col-12 col-lg-4 col-md-6">
-            <a href="index.php?action=listuser" style="text-decoration:none">
-                <div class="stats-card">
-                    <div>
-                        <h6 class="text-muted font-semibold">Thành viên</h6>
-                        <h4 class="font-extrabold mb-0" style="color:#fff">
-                            <?= number_format($countUser) ?>
-                        </h4>
-                    </div>
-                    <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;">
-                        <i class="bi bi-people-fill"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-    </div>
-
 
     <div class="row mb-4">
-
-        <!-- Doanh thu hôm nay -->
-        <div class="col-12 col-lg-4 col-md-6">
+        <div class="col-6 col-lg-3 col-md-6">
             <div class="stats-card">
                 <div>
-                    <h6 class="text-muted font-semibold">Doanh thu hôm nay</h6>
-                    <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($doanhThuHomNay) ?> ₫
-                    </h4>
-                </div>
-                <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;">
-                    <i class="bi bi-lightning-fill"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- Doanh thu tháng -->
-        <div class="col-12 col-lg-4 col-md-6">
-            <div class="stats-card">
-                <div>
-                    <h6 class="text-muted font-semibold">Doanh thu tháng</h6>
+                    <h6 class="text-muted font-semibold">Doanh thu (Tháng)</h6>
                     <h4 class="font-extrabold mb-0" style="color:#fff">
                         <?= number_format($doanhThuThang) ?> ₫
                     </h4>
+                    <span style="font-size: 0.8rem; color: #a0aec0;">
+                        Hôm nay: <b style="color: #ff2e63;"><?= number_format($doanhThuHomNay) ?> ₫</b>
+                    </span>
+                </div>
+                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
+                    <i class="bi bi-cash-stack"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Tổng doanh thu</h6>
+                    <h4 class="font-extrabold mb-0" style="color:#fff">
+                        <?= number_format($tongDoanhThu) ?> ₫
+                    </h4>
+                    <span style="font-size: 0.8rem; color: #a0aec0;">
+                        Hôm nay: <b style="color: #ff2e63;"><?= number_format($doanhThuHomNay) ?> ₫</b>
+                    </span>
                 </div>
                 <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
                     <i class="bi bi-cash-stack"></i>
@@ -93,21 +40,47 @@
             </div>
         </div>
 
-        <!-- Tổng doanh thu -->
-        <div class="col-12 col-lg-4 col-md-6">
+        <div class="col-6 col-lg-3 col-md-6">
             <div class="stats-card">
                 <div>
-                    <h6 class="text-muted font-semibold">Tổng doanh thu</h6>
+                    <h6 class="text-muted font-semibold">Đơn hàng</h6>
                     <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($tongDoanhThu) ?> ₫
+                        <?= number_format($countDonHang) ?>
                     </h4>
                 </div>
-                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
-                    <i class="bi bi-graph-up-arrow"></i>
+                <div class="stats-icon" style="background: rgba(13, 202, 240, 0.2); color: #0dcaf0;">
+                    <i class="bi bi-cart-check"></i>
                 </div>
             </div>
         </div>
 
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Sản phẩm</h6>
+                    <h4 class="font-extrabold mb-0" style="color:#fff">
+                        <?= number_format($countSanPham) ?>
+                    </h4>
+                </div>
+                <div class="stats-icon" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;">
+                    <i class="bi bi-phone"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Thành viên</h6>
+                    <h4 class="font-extrabold mb-0" style="color:#fff">
+                        <?= number_format($countUser) ?>
+                    </h4>
+                </div>
+                <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row mb-4">

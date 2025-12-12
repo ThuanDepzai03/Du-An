@@ -26,7 +26,8 @@ if (!isset($_SESSION['admin_logged'])) {
 if (isset($_GET['action']) && $_GET['action'] != "") {
     $action = $_GET['action'];
     switch ($action) {
-        // --- CÁC CASE KHÁC (LOGIN, USER, DANHMUC, SANPHAM, HOADON) GIỮ NGUYÊN ---
+
+        // --- NHÓM 1: ĐĂNG NHẬP / ĐĂNG XUẤT (Bị thiếu đoạn này) ---
         case "login":
             $userCtrl->login();
             break;
@@ -37,25 +38,27 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $userCtrl->logout();
             break;
 
-        case "listuser":
+        // --- NHÓM 2: QUẢN LÝ TÀI KHOẢN (User) ---
+        case "listuser":     // Xem danh sách
             $userCtrl->index();
             break;
-        case "createuser":
+        case "createuser":   // Hiện form thêm (Bị thiếu)
             $userCtrl->create();
             break;
-        case "storeuser":
+        case "storeuser":    // Lưu người dùng mới (Bị thiếu)
             $userCtrl->store();
             break;
-        case "edituser":
+        case "edituser":     // Hiện form sửa
             $userCtrl->edit();
             break;
-        case "updateuser":
+        case "updateuser":   // Lưu cập nhật
             $userCtrl->update();
             break;
-        case "deleteuser":
+        case "deleteuser":   // Xóa
             $userCtrl->delete();
             break;
 
+        // --- NHÓM 3: DANH MỤC ---
         case "listdanhmuc":
             $danhMuc->index();
             break;
@@ -78,6 +81,7 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $danhMuc->restore();
             break;
 
+        // --- NHÓM 4: SẢN PHẨM ---
         case "listsanpham":
             $sanPham->index();
             break;
@@ -99,7 +103,6 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
         case "restoresanpham":
             $sanPham->restore();
             break;
-
         case "listhoadon":
             $hoaDon->index();
             break;
@@ -109,64 +112,64 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
         case "update_status":
             $hoaDon->update_status();
             break;
-
-        // --- DASHBOARD (XỬ LÝ CHÍNH Ở ĐÂY) ---
         case "dashboard":
-        default:
-            // 1. Khởi tạo Model
+        default: // Gộp chung dashboard và default xử lý giống nhau
             $spModel = new SanPham();
             $hdModel = new HoaDon();
             $userModel = new UserModel();
 
-            // 2. Lấy số liệu đếm
+            // Lấy số liệu đếm
             $countSanPham = $spModel->getCount();
             $countDonHang = $hdModel->getCount();
             $countUser    = $userModel->getCount();
 
-            // 3. Lấy số liệu doanh thu (Card)
-            $doanhThuHomNay = $hdModel->getDoanhThuHomNay();
-            $doanhThuThang  = $hdModel->getDoanhThu30DayAgo();
-            $doanhThuNam    = $hdModel->getDoanhThuNamNay();
-            $tongDoanhThu   = $hdModel->getTongDoanhThu();
+            // --- PHẦN MỚI: LẤY DOANH THU ---
+            $doanhThuHomNay = $hdModel->getDoanhThuHomNay();      // Doanh thu hôm nay
+            $doanhThuThang  = $hdModel->getDoanhThu30DayAgo(); // Doanh thu 30 ngày
 
-            // 4. Lấy dữ liệu Biểu đồ 1 Năm (Bar Chart)
-            $revenueDataYear = $hdModel->getDuLieuBieuDoYear();
-            $chartLabels1Year = [];
-            $chartValues1Year = [];
-            foreach ($revenueDataYear as $data) {
-                $chartLabels1Year[] = "T" . date("m", strtotime($data['thang'] . "-01"));
-                $chartValues1Year[] = (int)$data['tong_tien'];
+            // --- PHẦN MỚI: DỮ LIỆU BIỂU ĐỒ 30 NGÀY ---
+            $revenueData = $hdModel->getDuLieuBieuDo30Day();
+            $chartLabels = [];
+            $chartValues = [];
+            foreach ($revenueData as $data) {
+                $chartLabels[] = date("d/m", strtotime($data['ngay']));
+                $chartValues[] = (int)$data['tong_tien'];
             }
-            $jsonLabels1Year = json_encode($chartLabels1Year);
-            $jsonValues1Year = json_encode($chartValues1Year);
-
-            // 5. Lấy dữ liệu Biểu đồ 1 Tháng (Line Chart)
-            $revenueDataMonth = $hdModel->getDuLieuBieuDo30Day();
-            $chartLabels30Days = [];
-            $chartValues30Days = [];
-            foreach ($revenueDataMonth as $data) {
-                $chartLabels30Days[] = date("d/m", strtotime($data['ngay']));
-                $chartValues30Days[] = (int)$data['tong_tien'];
-            }
-            $jsonLabels30Days = json_encode($chartLabels30Days);
-            $jsonValues30Days = json_encode($chartValues30Days);
-
-            $revenueData999 = $hdModel->getDuLieuBieuDo999Day();
-            $chartLabels999Days = [];
-            $chartValues999Days = [];
-            foreach ($revenueData999 as $data) {
-                // Format ngày/tháng/năm vì khoảng thời gian dài
-                $chartLabels999Days[] = date("d/m/Y", strtotime($data['ngay']));
-                $chartValues999Days[] = (int)$data['tong_tien'];
-            }
-            $jsonLabels999Days = json_encode($chartLabels999Days);
-            $jsonValues999Days = json_encode($chartValues999Days);
+            $jsonLabels = json_encode($chartLabels);
+            $jsonValues = json_encode($chartValues);
 
             include "views/dashboard.php";
             break;
     }
 } else {
-    // CHUYỂN HƯỚNG MẶC ĐỊNH VỀ DASHBOARD
-    header("Location: index.php?action=dashboard");
-    exit();
+    // 1. Initialize Models
+    $spModel = new SanPham();
+    $hdModel = new HoaDon();
+    $userModel = new UserModel();
+
+    // 2. Get Count Data
+    $countSanPham = $spModel->getCount();
+    $countDonHang = $hdModel->getCount();
+    $countUser    = $userModel->getCount();
+
+    // 3. Get Revenue Data (This fixes the "Undefined variable" error)
+    $doanhThuHomNay = $hdModel->getDoanhThuHomNay();
+    $doanhThuThang  = $hdModel->getDoanhThu30DayAgo();
+    $doanhThuNam = $hdModel->getChartData1Year();
+    $tongDoanhThu = $hdModel->getTongDoanhThu();
+
+    // 4. Get Chart Data (Required for the chart to work)
+    $revenueData = $hdModel->getDuLieuBieuDo30Day();
+    $chartLabels = [];
+    $chartValues = [];
+
+    foreach ($revenueData as $data) {
+        $chartLabels[] = date("d/m", strtotime($data['ngay']));
+        $chartValues[] = (int)$data['tong_tien'];
+    }
+
+    $jsonLabels = json_encode($chartLabels);
+    $jsonValues = json_encode($chartValues);
+
+    include "views/dashboard.php";
 }
