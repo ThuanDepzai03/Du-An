@@ -3,7 +3,6 @@ include_once("pdo.php");
 
 class HoaDon
 {
-    // --- CÁC HÀM CƠ BẢN (CRUD) ---
     public function getAll()
     {
         $sql = "select * from hoadon";
@@ -11,20 +10,24 @@ class HoaDon
     }
     public function getAllCthdByIdHoaDon($id_hoadon)
     {
-        $sql = "SELECT ct.*, sp.name, sp.img FROM chitiethoadon ct JOIN sanpham sp ON ct.id_sanpham = sp.id WHERE ct.id_hoadon = ?";
+        $sql = "SELECT ct.*, sp.name, sp.img 
+            FROM chitiethoadon ct 
+            JOIN sanpham sp ON ct.id_sanpham = sp.id 
+            WHERE ct.id_hoadon = ?";
         return pdo_query($sql, $id_hoadon);
     }
+
+    public function insert($ten)
+    {
+        $sql = "insert into danhmuc (name) values (?)";
+        pdo_execute($sql, $ten);
+    }
+
     public function getOne($id)
     {
         $sql = "select * from hoadon where id = ?";
         return pdo_query_one($sql, $id);
     }
-    public function updateStatus($id, $trangthai)
-    {
-        $sql = "UPDATE hoadon SET trangthai = ? WHERE id = ?";
-        pdo_execute($sql, $trangthai, $id);
-    }
-    //
 
     public function update($id, $ten)
     {
@@ -43,7 +46,18 @@ class HoaDon
         $sql = "update hoadon set deleted = 0 where id = ?";
         pdo_execute($sql, $id);
     }
-    //   
+    public function updateStatus($id, $trangthai)
+    {
+        $sql = "UPDATE hoadon SET trangthai = ? WHERE id = ?";
+        pdo_execute($sql, $trangthai, $id);
+    }
+    public function getCount()
+    {
+        $sql = "SELECT count(*) as total FROM hoadon";
+        $row = pdo_query_one($sql);
+        return $row['total'];
+    }
+
     // 1. Đếm tổng đơn
     public function getCount()
     {
@@ -99,16 +113,6 @@ class HoaDon
         $sql = "SELECT DATE_FORMAT(ngaygiodat, '%Y-%m') as thang, SUM(tongtien) as tong_tien 
                 FROM hoadon WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
                 GROUP BY DATE_FORMAT(ngaygiodat, '%Y-%m') ORDER BY thang ASC";
-        return pdo_query($sql);
-    }
-    public function getDuLieuBieuDo999Day()
-    {
-        $sql = "SELECT DATE(ngaygiodat) as ngay, SUM(tongtien) as tong_tien 
-                FROM hoadon 
-                WHERE trangthai = 2 
-                AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 999 DAY)
-                GROUP BY DATE(ngaygiodat) 
-                ORDER BY ngay ASC";
         return pdo_query($sql);
     }
 }

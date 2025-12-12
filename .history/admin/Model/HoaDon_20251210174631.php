@@ -3,7 +3,6 @@ include_once("pdo.php");
 
 class HoaDon
 {
-    // --- CÁC HÀM CƠ BẢN (CRUD) ---
     public function getAll()
     {
         $sql = "select * from hoadon";
@@ -11,20 +10,24 @@ class HoaDon
     }
     public function getAllCthdByIdHoaDon($id_hoadon)
     {
-        $sql = "SELECT ct.*, sp.name, sp.img FROM chitiethoadon ct JOIN sanpham sp ON ct.id_sanpham = sp.id WHERE ct.id_hoadon = ?";
+        $sql = "SELECT ct.*, sp.name, sp.img 
+            FROM chitiethoadon ct 
+            JOIN sanpham sp ON ct.id_sanpham = sp.id 
+            WHERE ct.id_hoadon = ?";
         return pdo_query($sql, $id_hoadon);
     }
+
+    public function insert($ten)
+    {
+        $sql = "insert into danhmuc (name) values (?)";
+        pdo_execute($sql, $ten);
+    }
+
     public function getOne($id)
     {
         $sql = "select * from hoadon where id = ?";
         return pdo_query_one($sql, $id);
     }
-    public function updateStatus($id, $trangthai)
-    {
-        $sql = "UPDATE hoadon SET trangthai = ? WHERE id = ?";
-        pdo_execute($sql, $trangthai, $id);
-    }
-    //
 
     public function update($id, $ten)
     {
@@ -43,8 +46,11 @@ class HoaDon
         $sql = "update hoadon set deleted = 0 where id = ?";
         pdo_execute($sql, $id);
     }
-    //   
-    // 1. Đếm tổng đơn
+    public function updateStatus($id, $trangthai)
+    {
+        $sql = "UPDATE hoadon SET trangthai = ? WHERE id = ?";
+        pdo_execute($sql, $trangthai, $id);
+    }
     public function getCount()
     {
         $sql = "SELECT count(*) as total FROM hoadon";
@@ -52,7 +58,7 @@ class HoaDon
         return $row['total'];
     }
 
-    // 2. Doanh thu HÔM NAY
+    // 2. Revenue Today (Status = 2)
     public function getDoanhThuHomNay()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon WHERE trangthai = 2 AND DATE(ngaygiodat) = CURDATE()";
@@ -60,7 +66,7 @@ class HoaDon
         return $row['total'] ?? 0;
     }
 
-    // 3. Doanh thu 30 NGÀY QUA (Tháng này)
+    // 3. Revenue This Month (Last 30 Days)
     public function getDoanhThu30DayAgo()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)";
@@ -68,7 +74,7 @@ class HoaDon
         return $row['total'] ?? 0;
     }
 
-    // 4. Doanh thu NĂM NAY
+    // 4. Revenue This Year
     public function getDoanhThuNamNay()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon WHERE trangthai = 2 AND YEAR(ngaygiodat) = YEAR(CURDATE())";
@@ -76,7 +82,7 @@ class HoaDon
         return $row['total'] ?? 0;
     }
 
-    // 5. Tổng doanh thu TOÀN THỜI GIAN
+    // 5. Total Revenue (All Time)
     public function getTongDoanhThu()
     {
         $sql = "SELECT SUM(tongtien) as total FROM hoadon WHERE trangthai = 2";
@@ -84,31 +90,23 @@ class HoaDon
         return $row['total'] ?? 0;
     }
 
-    // 6. Dữ liệu BIỂU ĐỒ 30 NGÀY (Chi tiết từng ngày)
+    // 6. CHART DATA: Last 30 Days (Daily)
     public function getDuLieuBieuDo30Day()
     {
         $sql = "SELECT DATE(ngaygiodat) as ngay, SUM(tongtien) as tong_tien 
-                FROM hoadon WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+                FROM hoadon 
+                WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
                 GROUP BY DATE(ngaygiodat) ORDER BY ngay ASC";
         return pdo_query($sql);
     }
 
-    // 7. Dữ liệu BIỂU ĐỒ 1 NĂM (Chi tiết từng tháng)
+    // 7. CHART DATA: Last 12 Months (Monthly)
     public function getDuLieuBieuDoYear()
     {
         $sql = "SELECT DATE_FORMAT(ngaygiodat, '%Y-%m') as thang, SUM(tongtien) as tong_tien 
-                FROM hoadon WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
-                GROUP BY DATE_FORMAT(ngaygiodat, '%Y-%m') ORDER BY thang ASC";
-        return pdo_query($sql);
-    }
-    public function getDuLieuBieuDo999Day()
-    {
-        $sql = "SELECT DATE(ngaygiodat) as ngay, SUM(tongtien) as tong_tien 
                 FROM hoadon 
-                WHERE trangthai = 2 
-                AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 999 DAY)
-                GROUP BY DATE(ngaygiodat) 
-                ORDER BY ngay ASC";
+                WHERE trangthai = 2 AND ngaygiodat >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
+                GROUP BY DATE_FORMAT(ngaygiodat, '%Y-%m') ORDER BY thang ASC";
         return pdo_query($sql);
     }
 }

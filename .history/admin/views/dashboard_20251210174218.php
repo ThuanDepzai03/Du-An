@@ -5,87 +5,34 @@
 </div>
 
 <div class="page-content">
-    <div class="row mb-4">
-
-        <!-- Đơn hàng -->
-        <div class="col-12 col-lg-4 col-md-6">
-            <a href="index.php?action=listhoadon" style="text-decoration:none">
-                <div class="stats-card">
-                    <div>
-                        <h6 class="text-muted font-semibold">Đơn hàng</h6>
-                        <h4 class="font-extrabold mb-0" style="color:#fff">
-                            <?= number_format($countDonHang) ?>
-                        </h4>
-                    </div>
-                    <div class="stats-icon" style="background: rgba(13, 202, 240, 0.2); color: #0dcaf0;">
-                        <i class="bi bi-cart-check"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Sản phẩm -->
-        <div class="col-12 col-lg-4 col-md-6">
-            <a href="index.php?action=listsanpham" style="text-decoration:none">
-                <div class="stats-card">
-                    <div>
-                        <h6 class="text-muted font-semibold">Sản phẩm</h6>
-                        <h4 class="font-extrabold mb-0" style="color:#fff">
-                            <?= number_format($countSanPham) ?>
-                        </h4>
-                    </div>
-                    <div class="stats-icon" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;">
-                        <i class="bi bi-phone"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Thành viên -->
-        <div class="col-12 col-lg-4 col-md-6">
-            <a href="index.php?action=listuser" style="text-decoration:none">
-                <div class="stats-card">
-                    <div>
-                        <h6 class="text-muted font-semibold">Thành viên</h6>
-                        <h4 class="font-extrabold mb-0" style="color:#fff">
-                            <?= number_format($countUser) ?>
-                        </h4>
-                    </div>
-                    <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;">
-                        <i class="bi bi-people-fill"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-    </div>
-
 
     <div class="row mb-4">
-
-        <!-- Doanh thu hôm nay -->
-        <div class="col-12 col-lg-4 col-md-6">
+        <div class="col-6 col-lg-3 col-md-6">
             <div class="stats-card">
                 <div>
-                    <h6 class="text-muted font-semibold">Doanh thu hôm nay</h6>
-                    <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($doanhThuHomNay) ?> ₫
-                    </h4>
-                </div>
-                <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;">
-                    <i class="bi bi-lightning-fill"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- Doanh thu tháng -->
-        <div class="col-12 col-lg-4 col-md-6">
-            <div class="stats-card">
-                <div>
-                    <h6 class="text-muted font-semibold">Doanh thu tháng</h6>
+                    <h6 class="text-muted font-semibold">Doanh thu (Tháng)</h6>
                     <h4 class="font-extrabold mb-0" style="color:#fff">
                         <?= number_format($doanhThuThang) ?> ₫
                     </h4>
+                    <span style="font-size: 0.8rem; color: #a0aec0;">
+                        Hôm nay: <b style="color: #ff2e63;"><?= number_format($doanhThuHomNay) ?> ₫</b>
+                    </span>
+                </div>
+                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
+                    <i class="bi bi-cash-stack"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Tổng doanh thu</h6>
+                    <h4 class="font-extrabold mb-0" style="color:#fff">
+                        <?= number_format($tongDoanhThu) ?> ₫
+                    </h4>
+                    <span style="font-size: 0.8rem; color: #a0aec0;">
+                        Hôm nay: <b style="color: #ff2e63;"><?= number_format($doanhThuHomNay) ?> ₫</b>
+                    </span>
                 </div>
                 <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
                     <i class="bi bi-cash-stack"></i>
@@ -93,21 +40,47 @@
             </div>
         </div>
 
-        <!-- Tổng doanh thu -->
-        <div class="col-12 col-lg-4 col-md-6">
+        <div class="col-6 col-lg-3 col-md-6">
             <div class="stats-card">
                 <div>
-                    <h6 class="text-muted font-semibold">Tổng doanh thu</h6>
+                    <h6 class="text-muted font-semibold">Đơn hàng</h6>
                     <h4 class="font-extrabold mb-0" style="color:#fff">
-                        <?= number_format($tongDoanhThu) ?> ₫
+                        <?= number_format($countDonHang) ?>
                     </h4>
                 </div>
-                <div class="stats-icon" style="background: rgba(25, 135, 84, 0.2); color: #198754;">
-                    <i class="bi bi-graph-up-arrow"></i>
+                <div class="stats-icon" style="background: rgba(13, 202, 240, 0.2); color: #0dcaf0;">
+                    <i class="bi bi-cart-check"></i>
                 </div>
             </div>
         </div>
 
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Sản phẩm</h6>
+                    <h4 class="font-extrabold mb-0" style="color:#fff">
+                        <?= number_format($countSanPham) ?>
+                    </h4>
+                </div>
+                <div class="stats-icon" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;">
+                    <i class="bi bi-phone"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="stats-card">
+                <div>
+                    <h6 class="text-muted font-semibold">Thành viên</h6>
+                    <h4 class="font-extrabold mb-0" style="color:#fff">
+                        <?= number_format($countUser) ?>
+                    </h4>
+                </div>
+                <div class="stats-icon" style="background: rgba(255, 46, 99, 0.2); color: #ff2e63;">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row mb-4">
@@ -131,18 +104,6 @@
                 </div>
                 <div class="card-body">
                     <canvas id="revenueChartMonth" style="height: 350px;"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card" style="background-color: #1c1f2b; color: #fff;">
-                <div class="card-header" style="background-color: #1c1f2b; border-bottom: 1px solid #3a3f50;">
-                    <h4 style="color: #fff;">Biểu đồ doanh thu 999 ngày gần nhất</h4>
-                </div>
-                <div class="card-body">
-                    <canvas id="revenueChart999" style="height: 350px;"></canvas>
                 </div>
             </div>
         </div>
@@ -268,26 +229,6 @@
                 pointBackgroundColor: '#ffffff',
                 pointBorderColor: '#ff2e63',
                 pointRadius: 4,
-                fill: true,
-                tension: 0.4
-            }]
-        },
-        options: commonOptions
-    });
-    const ctx999 = document.getElementById('revenueChart999').getContext('2d');
-    new Chart(ctx999, {
-        type: 'line',
-        data: {
-            labels: <?= isset($jsonLabels999Days) ? $jsonLabels999Days : '[]' ?>,
-            datasets: [{
-                label: 'Doanh thu (VND)',
-                data: <?= isset($jsonValues999Days) ? $jsonValues999Days : '[]' ?>,
-                backgroundColor: 'rgba(40, 167, 69, 0.2)', // Màu xanh lá
-                borderColor: '#28a745',
-                borderWidth: 2,
-                pointBackgroundColor: '#ffffff',
-                pointBorderColor: '#28a745',
-                pointRadius: 2, // Điểm nhỏ lại vì dữ liệu nhiều
                 fill: true,
                 tension: 0.4
             }]

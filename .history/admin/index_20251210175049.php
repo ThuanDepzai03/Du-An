@@ -151,17 +151,6 @@ if (isset($_GET['action']) && $_GET['action'] != "") {
             $jsonLabels30Days = json_encode($chartLabels30Days);
             $jsonValues30Days = json_encode($chartValues30Days);
 
-            $revenueData999 = $hdModel->getDuLieuBieuDo999Day();
-            $chartLabels999Days = [];
-            $chartValues999Days = [];
-            foreach ($revenueData999 as $data) {
-                // Format ngày/tháng/năm vì khoảng thời gian dài
-                $chartLabels999Days[] = date("d/m/Y", strtotime($data['ngay']));
-                $chartValues999Days[] = (int)$data['tong_tien'];
-            }
-            $jsonLabels999Days = json_encode($chartLabels999Days);
-            $jsonValues999Days = json_encode($chartValues999Days);
-
             include "views/dashboard.php";
             break;
     }
