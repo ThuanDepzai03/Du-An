@@ -9,6 +9,11 @@ class HoaDon
         $sql = "select * from hoadon ORDER BY id DESC";
         return pdo_query($sql);
     }
+
+
+
+
+
     public function getOne($id)
     {
         $sql = "select * from hoadon where id = ?";

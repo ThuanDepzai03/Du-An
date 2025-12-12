@@ -15,7 +15,7 @@ $cartQty = array_sum(array_column($cart, 'soLuong'));
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AE Phoenic Store</title>
+	<title>Electro Store</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 	<link rel="stylesheet" href="../Public/css/bootstrap.min.css" />

@@ -9,22 +9,7 @@ class HoaDon
         $sql = "select * from hoadon ORDER BY id DESC";
         return pdo_query($sql);
     }
-    public function getOne($id)
-    {
-        $sql = "select * from hoadon where id = ?";
-        return pdo_query_one($sql, $id);
-    }
 
-    public function updateStatus($id, $trangthai)
-    {
-        $sql = "UPDATE hoadon SET trangthai = ? WHERE id = ?";
-        pdo_execute($sql, $trangthai, $id);
-    }
-    public function getAllCthdByIdHoaDon($id_hoadon)
-    {
-        $sql = "SELECT ct.*, sp.name, sp.img FROM chitiethoadon ct JOIN sanpham sp ON ct.id_sanpham = sp.id WHERE ct.id_hoadon = ?";
-        return pdo_query($sql, $id_hoadon);
-    }
     // --- HÀM LỌC  ---
     public function getAllByFilter($keyword = "", $trangthai = "", $dateFrom = "", $dateTo = "")
     {
@@ -61,7 +46,28 @@ class HoaDon
         return pdo_query($sql, ...$params);
     }
 
-    // --- 2. CÁC HÀM THỐNG KÊ (DASHBOARD) ---
+    public function getAllCthdByIdHoaDon($id_hoadon)
+    {
+        $sql = "SELECT ct.*, sp.name, sp.img FROM chitiethoadon ct JOIN sanpham sp ON ct.id_sanpham = sp.id WHERE ct.id_hoadon = ?";
+        return pdo_query($sql, $id_hoadon);
+    }
+
+    public function getOne($id)
+    {
+        $sql = "select * from hoadon where id = ?";
+        return pdo_query_one($sql, $id);
+    }
+
+    public function updateStatus($id, $trangthai)
+    {
+        $sql = "UPDATE hoadon SET trangthai = ? WHERE id = ?";
+        pdo_execute($sql, $trangthai, $id);
+    }
+
+    // ... (Giữ lại các hàm insert, update, delete, restore nếu bạn có dùng) ...
+
+
+    // --- 2. CÁC HÀM THỐNG KÊ (DÙNG CHO DASHBOARD) ---
 
     // Đếm tổng đơn
     public function getCount()

@@ -83,7 +83,7 @@
 					<span class="copyright">
 						© <script>
 							document.write(new Date().getFullYear());
-						</script>AE Phoenic Store. All rights reserved
+						</script> Son Store. All rights reserved
 					</span>
 				</div>
 			</div>

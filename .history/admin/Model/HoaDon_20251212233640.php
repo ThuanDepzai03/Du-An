@@ -29,31 +29,31 @@ class HoaDon
     public function getAllByFilter($keyword = "", $trangthai = "", $dateFrom = "", $dateTo = "")
     {
         $sql = "SELECT * FROM hoadon WHERE 1=1";
-        $params = [];
+        $thongSo = [];
 
         // 1. Lọc theo tên hoặc SĐT
         if (!empty($keyword)) {
             $sql .= " AND (tenkhachhang LIKE ? OR sdt LIKE ?)";
-            $params[] = "%$keyword%";
-            $params[] = "%$keyword%";
+            $thongSo[] = "%$keyword%";
+            $thongSo[] = "%$keyword%";
         }
 
         // 2. Lọc theo trạng thái (Kiểm tra khác rỗng vì trạng thái 0 vẫn là hợp lệ)
         if ($trangthai !== "") {
             $sql .= " AND trangthai = ?";
-            $params[] = $trangthai;
+            $thongSo[] = $trangthai;
         }
 
         // 3. Lọc theo ngày bắt đầu
         if (!empty($dateFrom)) {
             $sql .= " AND DATE(ngaygiodat) >= ?";
-            $params[] = $dateFrom;
+            $thongSo[] = $dateFrom;
         }
 
         // 4. Lọc theo ngày kết thúc
         if (!empty($dateTo)) {
             $sql .= " AND DATE(ngaygiodat) <= ?";
-            $params[] = $dateTo;
+            $thongSo[] = $dateTo;
         }
 
         $sql .= " ORDER BY id DESC";

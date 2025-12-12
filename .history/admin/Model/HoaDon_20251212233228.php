@@ -9,6 +9,15 @@ class HoaDon
         $sql = "select * from hoadon ORDER BY id DESC";
         return pdo_query($sql);
     }
+
+
+
+    public function getAllCthdByIdHoaDon($id_hoadon)
+    {
+        $sql = "SELECT ct.*, sp.name, sp.img FROM chitiethoadon ct JOIN sanpham sp ON ct.id_sanpham = sp.id WHERE ct.id_hoadon = ?";
+        return pdo_query($sql, $id_hoadon);
+    }
+
     public function getOne($id)
     {
         $sql = "select * from hoadon where id = ?";
@@ -19,11 +28,6 @@ class HoaDon
     {
         $sql = "UPDATE hoadon SET trangthai = ? WHERE id = ?";
         pdo_execute($sql, $trangthai, $id);
-    }
-    public function getAllCthdByIdHoaDon($id_hoadon)
-    {
-        $sql = "SELECT ct.*, sp.name, sp.img FROM chitiethoadon ct JOIN sanpham sp ON ct.id_sanpham = sp.id WHERE ct.id_hoadon = ?";
-        return pdo_query($sql, $id_hoadon);
     }
     // --- HÀM LỌC  ---
     public function getAllByFilter($keyword = "", $trangthai = "", $dateFrom = "", $dateTo = "")
